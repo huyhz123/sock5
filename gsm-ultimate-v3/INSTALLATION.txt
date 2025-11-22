@@ -1,0 +1,73 @@
+═══════════════════════════════════════════════════════════════
+  GSM ULTIMATE V3.0 - QUICK INSTALLATION GUIDE
+═══════════════════════════════════════════════════════════════
+
+📦 INSTALLATION STEPS:
+
+1. COMPRESS THE THEME FOLDER
+   - Right-click "gsm-ultimate-v3" folder
+   - Select "Compress" or "Create ZIP"
+   - Name it: gsm-ultimate-v3.zip
+
+2. UPLOAD TO WORDPRESS
+   - Login to WordPress Admin
+   - Go to: Appearance → Themes
+   - Click: "Add New" → "Upload Theme"
+   - Choose: gsm-ultimate-v3.zip
+   - Click: "Install Now"
+   - Click: "Activate"
+
+3. CONFIGURE SETTINGS
+   - Go to: Appearance → Customize
+   - Set Logo Text: Hz
+   - Set Contact Info:
+     * Hotline: +84386355255
+     * WhatsApp: +84386355255
+     * Zalo: +84386355255
+     * Telegram: @hzgsm
+     * Email: contact@hzgsm.com
+   - Click: "Publish"
+
+4. CREATE MENU
+   - Go to: Appearance → Menus
+   - Create new menu
+   - Add Home, Services, Accounts, Phones, Parts, Blog, Contact
+   - Assign to "Primary Menu"
+   - Save
+
+5. DONE!
+   Visit your website to see the theme in action.
+
+═══════════════════════════════════════════════════════════════
+
+⚙️ OPTIONAL: API SETUP
+
+For IMEI services:
+- Go to: Appearance → Customize → API Settings
+- Add your GSMTOOL API Key
+- Add your DHRU Username & API Key
+
+═══════════════════════════════════════════════════════════════
+
+🌐 LANGUAGE SWITCHING
+
+Users can switch language using buttons in header:
+- EN (English)
+- VI (Vietnamese)
+- 中 (Chinese)
+
+💰 CURRENCY SWITCHING
+
+Users can switch currency using buttons in header:
+- $ (USD)
+- ₫ (VND)
+- ¥ (CNY)
+
+═══════════════════════════════════════════════════════════════
+
+📞 SUPPORT
+
+Phone/WhatsApp/Zalo: +84386355255
+Telegram: @hzgsm
+
+═══════════════════════════════════════════════════════════════
