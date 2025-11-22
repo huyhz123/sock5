@@ -966,10 +966,27 @@ function gsm_create_sample_content() {
                     update_post_meta($product_id, '_price', $prod['price']);
                 }
 
-                // Stock status
-                update_post_meta($product_id, '_stock_status', ($index % 5 == 0) ? 'outofstock' : 'instock');
-                update_post_meta($product_id, '_manage_stock', 'yes');
-                update_post_meta($product_id, '_stock', rand(10, 100));
+                // Stock management - Fixed logic
+                $is_out_of_stock = ($index % 7 == 0); // Every 7th product is out of stock
+                if ($is_out_of_stock) {
+                    update_post_meta($product_id, '_stock_status', 'outofstock');
+                    update_post_meta($product_id, '_manage_stock', 'no');
+                } else {
+                    update_post_meta($product_id, '_stock_status', 'instock');
+                    update_post_meta($product_id, '_manage_stock', 'yes');
+                    update_post_meta($product_id, '_stock', rand(15, 50));
+                }
+
+                // Essential WooCommerce meta fields
+                update_post_meta($product_id, '_sku', 'GSM-' . strtoupper(substr(md5($prod['name']), 0, 8)));
+                update_post_meta($product_id, '_visibility', 'visible');
+                update_post_meta($product_id, '_purchasable', 'yes');
+                update_post_meta($product_id, '_virtual', 'no');
+                update_post_meta($product_id, '_downloadable', 'no');
+                update_post_meta($product_id, '_sold_individually', 'no');
+                update_post_meta($product_id, '_tax_status', 'taxable');
+                update_post_meta($product_id, '_tax_class', '');
+                update_post_meta($product_id, '_backorders', 'no');
 
                 // Product category
                 $term = term_exists($prod['cat'], 'product_cat');
@@ -980,10 +997,13 @@ function gsm_create_sample_content() {
                     wp_set_object_terms($product_id, (int)$term['term_id'], 'product_cat');
                 }
 
-                // Featured product (every 3rd item)
-                if ($index % 3 == 0) {
+                // Featured product (every 4th item)
+                if ($index % 4 == 0) {
                     update_post_meta($product_id, '_featured', 'yes');
                 }
+
+                // Mark as WC product
+                wc_delete_product_transients($product_id);
             }
         }
     }
@@ -1001,6 +1021,80 @@ function gsm_body_classes($classes) {
     return $classes;
 }
 add_filter('body_class', 'gsm_body_classes');
+
+/**
+ * ============================================
+ * WOOCOMMERCE CUSTOMIZATIONS
+ * ============================================
+ */
+
+/**
+ * Remove default WooCommerce wrappers
+ */
+remove_action('woocommerce_before_main_content', 'woocommerce_output_content_wrapper', 10);
+remove_action('woocommerce_after_main_content', 'woocommerce_output_content_wrapper_end', 10);
+
+/**
+ * Add custom WooCommerce wrappers
+ */
+function gsm_woocommerce_wrapper_start() {
+    echo '<div class="container"><main class="woocommerce-content" style="padding:var(--sp-20) 0;">';
+}
+add_action('woocommerce_before_main_content', 'gsm_woocommerce_wrapper_start', 10);
+
+function gsm_woocommerce_wrapper_end() {
+    echo '</main></div>';
+}
+add_action('woocommerce_after_main_content', 'gsm_woocommerce_wrapper_end', 10);
+
+/**
+ * Disable WooCommerce sidebar
+ */
+remove_action('woocommerce_sidebar', 'woocommerce_get_sidebar', 10);
+
+/**
+ * Change number of products per page
+ */
+function gsm_products_per_page($cols) {
+    return 12;
+}
+add_filter('loop_shop_per_page', 'gsm_products_per_page', 20);
+
+/**
+ * Change number of product columns
+ */
+function gsm_loop_columns() {
+    return 3; // 3 products per row
+}
+add_filter('loop_shop_columns', 'gsm_loop_columns');
+
+/**
+ * Add WooCommerce cart icon to header (if needed)
+ */
+function gsm_woocommerce_cart_link() {
+    if (!class_exists('WooCommerce')) {
+        return;
+    }
+    ?>
+    <a class="cart-contents" href="<?php echo wc_get_cart_url(); ?>" title="<?php _e('View cart', 'gsm-ultimate'); ?>">
+        <i class="fas fa-shopping-cart"></i>
+        <span class="cart-count"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
+    </a>
+    <?php
+}
+
+/**
+ * Update cart count via AJAX
+ */
+function gsm_woocommerce_header_add_to_cart_fragment($fragments) {
+    ob_start();
+    ?>
+    <span class="cart-count"><?php echo WC()->cart->get_cart_contents_count(); ?></span>
+    <?php
+    $fragments['span.cart-count'] = ob_get_clean();
+    return $fragments;
+}
+add_filter('woocommerce_add_to_cart_fragments', 'gsm_woocommerce_header_add_to_cart_fragment');
 
 /**
  * ============================================
