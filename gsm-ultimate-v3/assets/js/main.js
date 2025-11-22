@@ -166,22 +166,32 @@
     }
 
     /**
-     * Product Filters
+     * Product Filters - WooCommerce Categories & Custom Post Types
      */
     function initProductFilters() {
         $('.filter-btn').on('click', function(e) {
             e.preventDefault();
 
             var filter = $(this).data('filter');
+            var category = $(this).data('category');
 
             // Update active state
             $('.filter-btn').removeClass('active');
             $(this).addClass('active');
 
-            // Filter products
-            if (filter === 'all') {
+            // Filter products - supports both data-filter and data-category
+            if (filter === 'all' || category === '*') {
                 $('.product-card').fadeIn(300);
-            } else {
+            } else if (category) {
+                // WooCommerce category filtering (class-based)
+                $('.product-card').hide();
+                if (category === '*') {
+                    $('.product-card').fadeIn(300);
+                } else {
+                    $('.product-card' + category).fadeIn(300);
+                }
+            } else if (filter) {
+                // Custom post type filtering (data-category attribute)
                 $('.product-card').hide();
                 $('.product-card[data-category="' + filter + '"]').fadeIn(300);
             }

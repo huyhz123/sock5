@@ -115,163 +115,212 @@ $lang = gsm_get_current_language();
     </div>
 </section>
 
-<!-- Services Section -->
-<section class="products-section" id="services">
+<!-- WooCommerce Products Section -->
+<section class="products-section" id="products">
     <div class="container">
         <div class="section-header">
             <h2 class="section-title">
-                <?php echo gsm_t('services'); ?>
+                <?php
+                if ($lang === 'en') echo 'Our Products';
+                elseif ($lang === 'zh') echo '我们的产品';
+                else echo 'Sản Phẩm Của Chúng Tôi';
+                ?>
             </h2>
             <p class="section-subtitle">
                 <?php
-                if ($lang === 'en') echo 'Professional GSM services for all your needs';
-                elseif ($lang === 'zh') echo '满足您所有需求的专业GSM服务';
-                else echo 'Dịch vụ GSM chuyên nghiệp cho mọi nhu cầu của bạn';
+                if ($lang === 'en') echo 'Browse our wide selection of phones, services, and accessories';
+                elseif ($lang === 'zh') echo '浏览我们广泛的手机、服务和配件选择';
+                else echo 'Khám phá các sản phẩm điện thoại, dịch vụ và phụ kiện';
                 ?>
             </p>
         </div>
 
-        <div class="section-filters">
-            <button class="filter-btn active" data-filter="all">
-                <?php
-                if ($lang === 'en') echo 'All Services';
-                elseif ($lang === 'zh') echo '所有服务';
-                else echo 'Tất cả';
+        <?php
+        // Display WooCommerce Product Categories
+        if (class_exists('WooCommerce')) :
+            $product_categories = get_terms(array(
+                'taxonomy' => 'product_cat',
+                'hide_empty' => false,
+                'exclude' => array(get_option('default_product_cat')), // Exclude "Uncategorized"
+            ));
+
+            if (!empty($product_categories) && !is_wp_error($product_categories)) :
                 ?>
-            </button>
-            <button class="filter-btn" data-filter="services">
-                <?php echo gsm_t('services'); ?>
-            </button>
-            <button class="filter-btn" data-filter="accounts">
-                <?php echo gsm_t('accounts'); ?>
-            </button>
-            <button class="filter-btn" data-filter="phones">
-                <?php echo gsm_t('phones'); ?>
-            </button>
-            <button class="filter-btn" data-filter="parts">
-                <?php echo gsm_t('parts'); ?>
-            </button>
-        </div>
-
-        <div class="products-grid">
-            <?php
-            // Get all product types
-            $product_types = array('gsm_service', 'gsm_account', 'gsm_phone', 'gsm_part');
-            $all_products = array();
-
-            foreach ($product_types as $type) {
-                $products = new WP_Query(array(
-                    'post_type' => $type,
-                    'posts_per_page' => 3,
-                    'orderby' => 'date',
-                    'order' => 'DESC',
-                ));
-
-                while ($products->have_posts()) {
-                    $products->the_post();
-                    $all_products[] = get_post();
-                }
-                wp_reset_postdata();
-            }
-
-            // Display products
-            foreach ($all_products as $product) {
-                setup_postdata($product);
-                $post_type = get_post_type($product);
-                $category_slug = str_replace('gsm_', '', $post_type);
-
-                $price = get_post_meta($product->ID, '_gsm_price', true);
-                $price_old = get_post_meta($product->ID, '_gsm_price_old', true);
-                $stock = get_post_meta($product->ID, '_gsm_stock', true);
-                ?>
-                <article class="product-card" data-category="<?php echo esc_attr($category_slug); ?>">
-                    <?php if ($price_old && $price_old > $price) : ?>
-                        <span class="product-badge">
-                            <?php
-                            $discount = round((($price_old - $price) / $price_old) * 100);
-                            echo '-' . $discount . '%';
-                            ?>
-                        </span>
-                    <?php endif; ?>
-
-                    <div class="product-image">
-                        <?php if (has_post_thumbnail($product->ID)) : ?>
-                            <?php echo get_the_post_thumbnail($product->ID, 'gsm-product-thumb'); ?>
-                        <?php else : ?>
-                            <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 80px;">
-                                <?php
-                                $icons = array(
-                                    'gsm_service' => '🔧',
-                                    'gsm_account' => '👤',
-                                    'gsm_phone' => '📱',
-                                    'gsm_part' => '⚙️',
-                                );
-                                echo $icons[$post_type];
-                                ?>
-                            </div>
-                        <?php endif; ?>
-                    </div>
-
-                    <div class="product-content">
-                        <div class="product-category">
-                            <?php echo esc_html(ucfirst($category_slug)); ?>
-                        </div>
-
-                        <h3 class="product-title">
-                            <a href="<?php echo get_permalink($product->ID); ?>">
-                                <?php echo get_the_title($product->ID); ?>
-                            </a>
-                        </h3>
-
-                        <p class="product-excerpt">
-                            <?php echo wp_trim_words(get_the_excerpt($product), 15); ?>
-                        </p>
-
-                        <div class="product-meta">
-                            <div class="product-price">
-                                <?php echo gsm_format_price($price); ?>
-                                <?php if ($price_old && $price_old > $price) : ?>
-                                    <span class="product-price-old"><?php echo gsm_format_price($price_old); ?></span>
-                                <?php endif; ?>
-                            </div>
-
-                            <?php if ($stock) : ?>
-                                <span class="product-stock <?php echo esc_attr($stock); ?>">
-                                    <?php echo gsm_t($stock); ?>
-                                </span>
-                            <?php endif; ?>
-                        </div>
-
-                        <a href="<?php echo get_permalink($product->ID); ?>" class="btn btn-primary btn-block">
-                            <i class="fas fa-shopping-cart"></i>
-                            <?php echo gsm_t('buy_now'); ?>
-                        </a>
-                    </div>
-                </article>
-                <?php
-            }
-            wp_reset_postdata();
-
-            // If no products
-            if (empty($all_products)) :
-                ?>
-                <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px;">
-                    <h3 style="color: var(--color-gray-light);">
+                <div class="section-filters">
+                    <button class="filter-btn active" data-category="*">
                         <?php
-                        if ($lang === 'en') echo 'No products available';
-                        elseif ($lang === 'zh') echo '暂无产品';
-                        else echo 'Chưa có sản phẩm';
+                        if ($lang === 'en') echo 'All Products';
+                        elseif ($lang === 'zh') echo '所有产品';
+                        else echo 'Tất cả';
                         ?>
-                    </h3>
+                    </button>
+                    <?php foreach ($product_categories as $category) : ?>
+                        <button class="filter-btn" data-category=".cat-<?php echo esc_attr($category->slug); ?>">
+                            <?php echo esc_html($category->name); ?>
+                        </button>
+                    <?php endforeach; ?>
                 </div>
             <?php endif; ?>
-        </div>
 
-        <div style="text-align: center; margin-top: var(--spacing-lg);">
-            <a href="<?php echo esc_url(get_post_type_archive_link('gsm_service')); ?>" class="btn btn-outline btn-lg">
-                <?php echo gsm_t('view_all'); ?> <i class="fas fa-arrow-right"></i>
-            </a>
-        </div>
+            <div class="products-grid">
+                <?php
+                // Get WooCommerce products
+                $args = array(
+                    'post_type' => 'product',
+                    'posts_per_page' => 12,
+                    'orderby' => 'date',
+                    'order' => 'DESC',
+                );
+
+                $products = new WP_Query($args);
+
+                if ($products->have_posts()) :
+                    while ($products->have_posts()) : $products->the_post();
+                        global $product;
+
+                        // Get product categories
+                        $terms = get_the_terms(get_the_ID(), 'product_cat');
+                        $cat_classes = '';
+                        if ($terms && !is_wp_error($terms)) {
+                            foreach ($terms as $term) {
+                                $cat_classes .= ' cat-' . $term->slug;
+                            }
+                        }
+                        ?>
+                        <article class="product-card<?php echo esc_attr($cat_classes); ?>">
+                            <?php if ($product->is_on_sale()) : ?>
+                                <span class="product-badge">
+                                    <?php
+                                    $percentage = 0;
+                                    if ($product->get_regular_price() && $product->get_sale_price()) {
+                                        $percentage = round((($product->get_regular_price() - $product->get_sale_price()) / $product->get_regular_price()) * 100);
+                                    }
+                                    echo $percentage > 0 ? '-' . $percentage . '%' : esc_html__('Sale', 'gsm-ultimate');
+                                    ?>
+                                </span>
+                            <?php endif; ?>
+
+                            <div class="product-image">
+                                <a href="<?php the_permalink(); ?>">
+                                    <?php if (has_post_thumbnail()) : ?>
+                                        <?php the_post_thumbnail('woocommerce_thumbnail'); ?>
+                                    <?php else : ?>
+                                        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 80px;">📦</div>
+                                    <?php endif; ?>
+                                </a>
+                            </div>
+
+                            <div class="product-content">
+                                <?php
+                                $categories = get_the_terms(get_the_ID(), 'product_cat');
+                                if ($categories && !is_wp_error($categories)) :
+                                    $category = array_shift($categories);
+                                    ?>
+                                    <div class="product-category">
+                                        <?php echo esc_html($category->name); ?>
+                                    </div>
+                                <?php endif; ?>
+
+                                <h3 class="product-title">
+                                    <a href="<?php the_permalink(); ?>">
+                                        <?php the_title(); ?>
+                                    </a>
+                                </h3>
+
+                                <p class="product-excerpt">
+                                    <?php echo wp_trim_words(get_the_excerpt(), 15); ?>
+                                </p>
+
+                                <div class="product-meta">
+                                    <div class="product-price">
+                                        <?php echo $product->get_price_html(); ?>
+                                    </div>
+
+                                    <?php if ($product->is_in_stock()) : ?>
+                                        <span class="product-stock in-stock">
+                                            <?php
+                                            if ($lang === 'en') echo 'In Stock';
+                                            elseif ($lang === 'zh') echo '有货';
+                                            else echo 'Còn hàng';
+                                            ?>
+                                        </span>
+                                    <?php else : ?>
+                                        <span class="product-stock out-of-stock">
+                                            <?php
+                                            if ($lang === 'en') echo 'Out of Stock';
+                                            elseif ($lang === 'zh') echo '缺货';
+                                            else echo 'Hết hàng';
+                                            ?>
+                                        </span>
+                                    <?php endif; ?>
+                                </div>
+
+                                <?php if ($product->is_purchasable() && $product->is_in_stock()) : ?>
+                                    <a href="<?php echo esc_url($product->add_to_cart_url()); ?>"
+                                       class="btn btn-primary btn-block add_to_cart_button ajax_add_to_cart"
+                                       data-product_id="<?php echo esc_attr($product->get_id()); ?>"
+                                       data-quantity="1">
+                                        <i class="fas fa-shopping-cart"></i>
+                                        <?php echo esc_html($product->add_to_cart_text()); ?>
+                                    </a>
+                                <?php else : ?>
+                                    <a href="<?php the_permalink(); ?>" class="btn btn-outline btn-block">
+                                        <i class="fas fa-eye"></i>
+                                        <?php
+                                        if ($lang === 'en') echo 'View Details';
+                                        elseif ($lang === 'zh') echo '查看详情';
+                                        else echo 'Xem chi tiết';
+                                        ?>
+                                    </a>
+                                <?php endif; ?>
+                            </div>
+                        </article>
+                    <?php
+                    endwhile;
+                    wp_reset_postdata();
+                else :
+                    ?>
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px;">
+                        <div style="font-size: 80px; margin-bottom: var(--sp-4);">📦</div>
+                        <h3 style="color: var(--gray-500); margin-bottom: var(--sp-2);">
+                            <?php
+                            if ($lang === 'en') echo 'No products available';
+                            elseif ($lang === 'zh') echo '暂无产品';
+                            else echo 'Chưa có sản phẩm';
+                            ?>
+                        </h3>
+                        <p style="color: var(--gray-400);">
+                            <?php
+                            if ($lang === 'en') echo 'Please check back later for new products!';
+                            elseif ($lang === 'zh') echo '请稍后查看新产品！';
+                            else echo 'Vui lòng quay lại sau để xem sản phẩm mới!';
+                            ?>
+                        </p>
+                    </div>
+                <?php endif; ?>
+            </div>
+
+            <div style="text-align: center; margin-top: var(--sp-8);">
+                <a href="<?php echo esc_url(get_permalink(wc_get_page_id('shop'))); ?>" class="btn btn-outline btn-lg">
+                    <?php
+                    if ($lang === 'en') echo 'View All Products';
+                    elseif ($lang === 'zh') echo '查看所有产品';
+                    else echo 'Xem tất cả sản phẩm';
+                    ?>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        <?php else : ?>
+            <div style="text-align: center; padding: 60px 20px;">
+                <p style="color: var(--gray-500);">
+                    <?php
+                    if ($lang === 'en') echo 'WooCommerce is not installed. Please install WooCommerce to display products.';
+                    elseif ($lang === 'zh') echo '未安装WooCommerce。请安装WooCommerce以显示产品。';
+                    else echo 'WooCommerce chưa được cài đặt. Vui lòng cài WooCommerce để hiển thị sản phẩm.';
+                    ?>
+                </p>
+            </div>
+        <?php endif; ?>
     </div>
 </section>
 
