@@ -220,7 +220,7 @@
         <!-- Copyright -->
         <div class="footer-bottom">
             <p>
-                &copy; <?php echo date('Y'); ?> <?php bloginfo('name'); ?>.
+                &copy; <?php echo esc_html(date('Y')); ?> <?php bloginfo('name'); ?>.
                 <?php
                 if ($lang === 'en') echo 'All rights reserved.';
                 elseif ($lang === 'zh') echo '版权所有。';
@@ -229,6 +229,53 @@
             </p>
         </div>
     </div>
+
+    <!-- Schema.org Structured Data for Local Business -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "@id": "<?php echo esc_url(home_url('/')); ?>",
+        "name": "<?php echo esc_js(get_bloginfo('name')); ?>",
+        "image": "<?php echo esc_url(get_template_directory_uri() . '/screenshot.png'); ?>",
+        "description": "<?php echo esc_js(get_bloginfo('description')); ?>",
+        "url": "<?php echo esc_url(home_url('/')); ?>",
+        "telephone": "<?php echo esc_js(get_theme_mod('gsm_hotline', GSM_HOTLINE)); ?>",
+        "email": "<?php echo esc_js(get_theme_mod('gsm_email', 'contact@hzgsm.com')); ?>",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "<?php echo esc_js(get_theme_mod('gsm_address', '436B/65 Đường 3/2, Phường 12')); ?>",
+            "addressLocality": "Quận 10",
+            "addressRegion": "TP.HCM",
+            "addressCountry": "VN"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": "10.7713",
+            "longitude": "106.6656"
+        },
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday"
+            ],
+            "opens": "08:00",
+            "closes": "21:00"
+        },
+        "priceRange": "$$",
+        "sameAs": [
+            "<?php echo esc_url(get_theme_mod('gsm_facebook', 'https://facebook.com')); ?>",
+            "<?php echo esc_url(get_theme_mod('gsm_youtube', 'https://youtube.com')); ?>",
+            "https://t.me/<?php echo esc_js(ltrim(get_theme_mod('gsm_telegram', GSM_TELEGRAM), '@')); ?>"
+        ]
+    }
+    </script>
 </footer>
 
 <!-- Floating Contact Buttons -->

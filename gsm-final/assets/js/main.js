@@ -96,31 +96,84 @@
     }
 
     /**
+     * Search Overlay Toggle
+     */
+    function initSearchOverlay() {
+        var $searchToggle = $('.search-toggle');
+        var $searchOverlay = $('.search-overlay');
+        var $searchClose = $('.search-close');
+        var $searchField = $('.search-field');
+
+        if ($searchToggle.length && $searchOverlay.length) {
+            // Open search
+            $searchToggle.on('click', function(e) {
+                e.preventDefault();
+                $searchOverlay.addClass('active');
+                $('body').css('overflow', 'hidden');
+                if ($searchField.length) {
+                    setTimeout(function() {
+                        $searchField.focus();
+                    }, 300);
+                }
+            });
+
+            // Close search
+            if ($searchClose.length) {
+                $searchClose.on('click', function() {
+                    $searchOverlay.removeClass('active');
+                    $('body').css('overflow', '');
+                });
+            }
+
+            // Close on overlay click
+            $searchOverlay.on('click', function(e) {
+                if ($(e.target).is($searchOverlay)) {
+                    $searchOverlay.removeClass('active');
+                    $('body').css('overflow', '');
+                }
+            });
+
+            // Close on ESC key
+            $(document).on('keydown', function(e) {
+                if (e.key === 'Escape' && $searchOverlay.hasClass('active')) {
+                    $searchOverlay.removeClass('active');
+                    $('body').css('overflow', '');
+                }
+            });
+        }
+    }
+
+    /**
      * Mobile Menu Toggle
      */
     function initMobileMenu() {
-        $('.mobile-menu-toggle').on('click', function(e) {
-            e.stopPropagation();
-            $('.nav-menu').toggleClass('active');
-            var $icon = $(this).find('i');
-            $icon.toggleClass('fa-bars fa-times');
-        });
+        var $mobileMenuToggle = $('.mobile-menu-toggle');
+        var $mainNavigation = $('.main-navigation');
 
-        // Close menu when clicking outside
-        $(document).on('click', function(e) {
-            if (!$(e.target).closest('.header-main').length) {
-                $('.nav-menu').removeClass('active');
-                $('.mobile-menu-toggle i').removeClass('fa-times').addClass('fa-bars');
-            }
-        });
+        if ($mobileMenuToggle.length && $mainNavigation.length) {
+            $mobileMenuToggle.on('click', function(e) {
+                e.preventDefault();
+                $mainNavigation.toggleClass('active');
+                $(this).find('i').toggleClass('fa-bars fa-times');
+            });
 
-        // Close menu when clicking a link
-        $('.nav-menu a').on('click', function() {
-            if ($(window).width() <= 768) {
-                $('.nav-menu').removeClass('active');
-                $('.mobile-menu-toggle i').removeClass('fa-times').addClass('fa-bars');
-            }
-        });
+            // Close mobile menu when clicking outside
+            $(document).on('click', function(e) {
+                if (!$mobileMenuToggle.is(e.target) && !$mobileMenuToggle.has(e.target).length &&
+                    !$mainNavigation.is(e.target) && !$mainNavigation.has(e.target).length) {
+                    $mainNavigation.removeClass('active');
+                    $mobileMenuToggle.find('i').removeClass('fa-times').addClass('fa-bars');
+                }
+            });
+
+            // Close mobile menu on window resize
+            $(window).on('resize', function() {
+                if ($(window).width() > 1023) {
+                    $mainNavigation.removeClass('active');
+                    $mobileMenuToggle.find('i').removeClass('fa-times').addClass('fa-bars');
+                }
+            });
+        }
     }
 
     /**
@@ -282,8 +335,6 @@
             else if (href.indexOf('zalo.me') !== -1) type = 'zalo';
             else if (href.indexOf('t.me') !== -1) type = 'telegram';
 
-            console.log('Contact click:', type, href);
-
             // Google Analytics tracking (if available)
             if (typeof gtag !== 'undefined') {
                 gtag('event', 'contact_click', {
@@ -296,13 +347,27 @@
         // Track product/blog clicks
         $('.product-card a, .blog-card a').on('click', function() {
             var title = $(this).closest('.product-card, .blog-card').find('.product-title, .blog-title').text();
-            console.log('Content click:', title.trim());
+
+            // Google Analytics tracking (if available)
+            if (typeof gtag !== 'undefined' && title) {
+                gtag('event', 'content_click', {
+                    'event_category': 'Content',
+                    'event_label': title.trim()
+                });
+            }
         });
 
         // Track "Buy Now" clicks
         $('.btn-primary').on('click', function() {
-            var context = $(this).closest('.product-card, .hero-banner').length > 0;
-            console.log('CTA click:', $(this).text().trim(), context);
+            var buttonText = $(this).text().trim();
+
+            // Google Analytics tracking (if available)
+            if (typeof gtag !== 'undefined' && buttonText) {
+                gtag('event', 'cta_click', {
+                    'event_category': 'CTA',
+                    'event_label': buttonText
+                });
+            }
         });
     }
 
@@ -531,6 +596,7 @@
         // Core functionality
         initLanguageSwitcher();
         initCurrencySwitcher();
+        initSearchOverlay();
         initMobileMenu();
         initSmoothScroll();
         initActiveMenuHighlight();
@@ -553,11 +619,6 @@
 
         // Effects
         initParticles();
-
-        // Console branding
-        console.log('%c GSM Ultimate v3.0 ', 'background: #ff9800; color: #000; font-weight: bold; padding: 10px; font-size: 16px;');
-        console.log('%c Multi-language & Multi-currency enabled ', 'color: #ff9800; font-weight: bold; font-size: 14px;');
-        console.log('%c Contact: +84386355255 | @hzgsm ', 'color: #ff9800; font-size: 12px;');
     });
 
     /**
