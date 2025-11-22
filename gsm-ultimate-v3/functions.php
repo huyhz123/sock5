@@ -1,6 +1,6 @@
 <?php
 /**
- * GSM Ultimate v3.3 - Functions
+ * GSM Ultimate v3.4 - Functions
  *
  * Features:
  * - ULTRA BRIGHT White Theme (Canh Dương)
@@ -16,7 +16,7 @@
  */
 
 // Theme Constants
-define('GSM_VERSION', '3.3.0');
+define('GSM_VERSION', '3.4.0');
 define('GSM_HOTLINE', '+84386355255');
 define('GSM_TELEGRAM', '@hzgsm');
 define('GSM_THEME_DIR', get_template_directory());
@@ -44,6 +44,12 @@ function gsm_ultimate_setup() {
     add_theme_support('customize-selective-refresh-widgets');
     add_theme_support('automatic-feed-links');
     add_theme_support('responsive-embeds');
+
+    // WooCommerce support
+    add_theme_support('woocommerce');
+    add_theme_support('wc-product-gallery-zoom');
+    add_theme_support('wc-product-gallery-lightbox');
+    add_theme_support('wc-product-gallery-slider');
 
     // Image sizes
     add_image_size('gsm-product-thumb', 400, 400, true);
@@ -128,6 +134,10 @@ function gsm_set_language() {
 
     if (in_array($lang, array('en', 'vi', 'zh'))) {
         setcookie('gsm_language', $lang, time() + YEAR_IN_SECONDS, COOKIEPATH, COOKIE_DOMAIN);
+
+        // Auto clear all caches when language switches
+        gsm_clear_all_caches();
+
         wp_send_json_success(array('language' => $lang));
     }
 
@@ -297,6 +307,10 @@ function gsm_set_currency() {
 
     if (in_array($currency, array('USD', 'VND', 'CNY'))) {
         setcookie('gsm_currency', $currency, time() + YEAR_IN_SECONDS, COOKIEPATH, COOKIE_DOMAIN);
+
+        // Auto clear all caches when currency switches
+        gsm_clear_all_caches();
+
         wp_send_json_success(array('currency' => $currency));
     }
 
@@ -877,6 +891,70 @@ function gsm_create_sample_content() {
             'post_type' => 'post',
             'post_category' => array(1), // Uncategorized
         ));
+    }
+
+    // Create WooCommerce Sample Products (if WooCommerce is active)
+    if (class_exists('WooCommerce')) {
+        $woo_products = array(
+            array('name' => 'iPhone 15 Pro Max 256GB', 'price' => '1299.99', 'sale_price' => '1199.99', 'desc' => 'Latest iPhone 15 Pro Max with Titanium design, A17 Pro chip, 256GB storage. Brand new sealed.', 'cat' => 'Smartphones'),
+            array('name' => 'Samsung Galaxy S24 Ultra', 'price' => '1199.99', 'desc' => 'Samsung S24 Ultra 512GB with S Pen, 200MP camera, Snapdragon 8 Gen 3.', 'cat' => 'Smartphones'),
+            array('name' => 'Google Pixel 8 Pro', 'price' => '899.99', 'sale_price' => '799.99', 'desc' => 'Google Pixel 8 Pro with AI features, Tensor G3 chip, 128GB storage.', 'cat' => 'Smartphones'),
+            array('name' => 'iPhone IMEI Check Service', 'price' => '2.99', 'desc' => 'Fast IMEI verification for all iPhone models. Get detailed information instantly.', 'cat' => 'Services'),
+            array('name' => 'Samsung Network Unlock', 'price' => '9.99', 'sale_price' => '7.99', 'desc' => 'Unlock any Samsung device from all carriers. Permanent unlock guaranteed.', 'cat' => 'Services'),
+            array('name' => 'iCloud Removal Service', 'price' => '29.99', 'desc' => 'Professional iCloud unlock service. Remove activation lock safely and permanently.', 'cat' => 'Services'),
+            array('name' => 'AirPods Pro 2nd Gen', 'price' => '249.99', 'sale_price' => '219.99', 'desc' => 'AirPods Pro with Active Noise Cancellation, USB-C charging case.', 'cat' => 'Accessories'),
+            array('name' => 'Samsung Galaxy Buds 2 Pro', 'price' => '229.99', 'desc' => 'Premium wireless earbuds with 360 Audio and ANC.', 'cat' => 'Accessories'),
+            array('name' => 'iPhone 14 OLED Screen', 'price' => '89.99', 'desc' => 'Original quality OLED replacement screen for iPhone 14. Includes tools.', 'cat' => 'Parts'),
+            array('name' => 'Samsung S23 Battery', 'price' => '29.99', 'sale_price' => '24.99', 'desc' => 'High capacity replacement battery for Galaxy S23. 4000mAh.', 'cat' => 'Parts'),
+            array('name' => 'Apple ID Premium Account', 'price' => '4.99', 'desc' => 'Fresh Apple ID with iCloud access and full warranty.', 'cat' => 'Accounts'),
+            array('name' => 'Netflix Premium 4K', 'price' => '12.99', 'desc' => 'Netflix Premium account - 4 screens, Ultra HD quality.', 'cat' => 'Accounts'),
+            array('name' => 'Xiaomi 14 Pro', 'price' => '699.99', 'desc' => 'Xiaomi 14 Pro with Leica camera, Snapdragon 8 Gen 3, 256GB.', 'cat' => 'Smartphones'),
+            array('name' => 'OnePlus 12', 'price' => '749.99', 'sale_price' => '699.99', 'desc' => 'OnePlus 12 with 100W fast charging and flagship performance.', 'cat' => 'Smartphones'),
+            array('name' => 'Phone Repair Tool Kit', 'price' => '19.99', 'desc' => 'Complete 38-piece phone repair tool kit for all smartphones.', 'cat' => 'Accessories'),
+        );
+
+        foreach ($woo_products as $index => $prod) {
+            // Create product
+            $product_id = wp_insert_post(array(
+                'post_title' => $prod['name'],
+                'post_content' => $prod['desc'],
+                'post_status' => 'publish',
+                'post_type' => 'product',
+            ));
+
+            if ($product_id) {
+                // Set product type to simple
+                wp_set_object_terms($product_id, 'simple', 'product_type');
+
+                // Set price
+                update_post_meta($product_id, '_regular_price', $prod['price']);
+                if (isset($prod['sale_price'])) {
+                    update_post_meta($product_id, '_sale_price', $prod['sale_price']);
+                    update_post_meta($product_id, '_price', $prod['sale_price']);
+                } else {
+                    update_post_meta($product_id, '_price', $prod['price']);
+                }
+
+                // Stock status
+                update_post_meta($product_id, '_stock_status', ($index % 5 == 0) ? 'outofstock' : 'instock');
+                update_post_meta($product_id, '_manage_stock', 'yes');
+                update_post_meta($product_id, '_stock', rand(10, 100));
+
+                // Product category
+                $term = term_exists($prod['cat'], 'product_cat');
+                if (!$term) {
+                    $term = wp_insert_term($prod['cat'], 'product_cat');
+                }
+                if (!is_wp_error($term)) {
+                    wp_set_object_terms($product_id, (int)$term['term_id'], 'product_cat');
+                }
+
+                // Featured product (every 3rd item)
+                if ($index % 3 == 0) {
+                    update_post_meta($product_id, '_featured', 'yes');
+                }
+            }
+        }
     }
 
     update_option('gsm_sample_content_created', true);

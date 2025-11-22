@@ -1,6 +1,6 @@
-# GSM Ultimate v3.3 - WordPress Theme
+# GSM Ultimate v3.4 - WordPress Theme
 
-**Professional GSM Services Theme with Multi-language, Multi-currency & API Integration - PERFECT EDITION**
+**Professional GSM Services Theme - White Black Red Edition with WooCommerce Support**
 
 ## 📋 Features
 
@@ -284,7 +284,7 @@ http://www.gnu.org/licenses/gpl-2.0.html
 ## 🎉 Credits
 
 **Theme by:** HzGSM
-**Version:** 3.3.0
+**Version:** 3.4.0
 **Release Date:** 2025
 
 ### Libraries Used:
@@ -294,6 +294,25 @@ http://www.gnu.org/licenses/gpl-2.0.html
 - Google Fonts (Inter)
 
 ## 🔄 Changelog
+
+### Version 3.4.0 (2025) - WHITE BLACK RED EDITION 🔴⚫⚪
+- ✅ **NEW COLOR SCHEME:** Complete redesign with White-Black-Red theme
+- ✅ **WOOCOMMERCE:** Full WooCommerce integration and support
+- ✅ **WOOCOMMERCE PRODUCTS:** 15 sample WooCommerce products auto-created
+- ✅ **AUTO CACHE CLEAR:** Cache clears automatically when switching language/currency
+- ✅ **FIXED TEXT READABILITY:** All text colors optimized for better contrast
+- ✅ **NEW COLORS:**
+  - Primary: Red (#e53935) instead of Orange
+  - Black: True black (#000000) for better contrast
+  - Background: Pure white (#ffffff)
+  - Gradients updated to red theme
+- ✅ **HERO BANNER:** Darker overlay with better text visibility
+- ✅ **HERO TEXT:** White text on dark background for perfect readability
+- ✅ **BACKGROUND PATTERN:** Subtle red grid pattern
+- ✅ **ALL SHADOWS:** Updated to match red theme
+- ✅ WooCommerce product gallery support (zoom, lightbox, slider)
+- ✅ Sample products include: smartphones, services, accessories, parts, accounts
+- ✅ Production-ready WooCommerce theme
 
 ### Version 3.3.0 (2025) - PERFECT EDITION ✨
 - ✅ **FIXED:** Instant language switching (no delay!)

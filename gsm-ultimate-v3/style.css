@@ -1,14 +1,14 @@
 /*
-Theme Name: GSM Ultimate v3.3
+Theme Name: GSM Ultimate v3.4
 Theme URI: https://hzgsm.com
 Author: HzGSM
 Author URI: https://t.me/hzgsm
-Description: Ultimate GSM Services Theme - ULTRA BRIGHT White Theme, Multi-language, Multi-currency, Auto Cache Clear, IMEI API Integration, Instant Language Switch
-Version: 3.3.0
+Description: Professional GSM Services Theme - White Black Red Design, WooCommerce Ready, Multi-language, Multi-currency, Auto Cache Clear, Instant Language Switch
+Version: 3.4.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: gsm-ultimate
-Tags: gsm, services, business, e-commerce, multi-language, modern, ultra-bright, white
+Tags: gsm, services, business, e-commerce, woocommerce, multi-language, modern, white, black, red
 
 Contact: +84386355255 | @hzgsm
 */
@@ -33,38 +33,38 @@ Contact: +84386355255 | @hzgsm
    1. CSS Variables & Design System
    =================================== */
 :root {
-    /* Colors - Ultra Bright White Theme (Canh Dương) */
-    --color-black: #2c3e50;
-    --color-gray-darker: #34495e;
-    --color-gray-dark: #546e7a;
-    --color-gray: #78909c;
-    --color-gray-light: #b0bec5;
-    --color-gray-lighter: #eceff1;
+    /* Colors - White Black Red Theme (Trắng Đen Đỏ) */
+    --color-black: #000000;
+    --color-gray-darker: #1a1a1a;
+    --color-gray-dark: #333333;
+    --color-gray: #666666;
+    --color-gray-light: #999999;
+    --color-gray-lighter: #e0e0e0;
     --color-white: #ffffff;
     --color-background: #ffffff;
 
-    /* Primary Colors - Vibrant Orange (Điểm nhấn) */
-    --color-primary: #ff9800;
-    --color-primary-dark: #f57c00;
-    --color-primary-light: #ffb74d;
+    /* Primary Colors - Vibrant Red (Đỏ nổi bật) */
+    --color-primary: #e53935;
+    --color-primary-dark: #c62828;
+    --color-primary-light: #ef5350;
 
     /* Accent & Status Colors */
-    --color-accent: #00bcd4;
-    --color-success: #66bb6a;
-    --color-warning: #ffa726;
-    --color-danger: #ef5350;
-    --color-info: #42a5f5;
+    --color-accent: #000000;
+    --color-success: #4caf50;
+    --color-warning: #ff9800;
+    --color-danger: #e53935;
+    --color-info: #2196f3;
 
-    /* Gradients - Ultra Light */
-    --gradient-primary: linear-gradient(135deg, #ff9800 0%, #ffb74d 100%);
-    --gradient-accent: linear-gradient(135deg, #00bcd4 0%, #4dd0e1 100%);
+    /* Gradients - Red & Black */
+    --gradient-primary: linear-gradient(135deg, #e53935 0%, #ef5350 100%);
+    --gradient-accent: linear-gradient(135deg, #000000 0%, #333333 100%);
     --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.98) 0%, rgba(255, 255, 255, 0.95) 100%);
     --gradient-bright: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
 
     /* Glassmorphism - Ultra Light */
     --glass-bg: rgba(255, 255, 255, 0.95);
-    --glass-border: rgba(255, 152, 0, 0.15);
-    --glass-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.05);
+    --glass-border: rgba(229, 57, 53, 0.2);
+    --glass-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.08);
     --glass-blur: blur(10px);
 
     /* Neumorphism - Very Soft */
@@ -141,8 +141,8 @@ body {
     color: var(--color-gray-dark);
     background-color: var(--color-background);
     background-image:
-        linear-gradient(rgba(255, 152, 0, 0.02) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 152, 0, 0.02) 1px, transparent 1px);
+        linear-gradient(rgba(229, 57, 53, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(229, 57, 53, 0.03) 1px, transparent 1px);
     background-size: 20px 20px;
     overflow-x: hidden;
 }
@@ -861,7 +861,7 @@ select.form-control {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, rgba(255, 152, 0, 0.15) 0%, rgba(255, 183, 77, 0.10) 100%);
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.3) 0%, rgba(229, 57, 53, 0.15) 100%);
     z-index: 2;
 }
 
@@ -882,7 +882,7 @@ select.form-control {
     position: relative;
     z-index: 10;
     text-align: center;
-    color: var(--color-black);
+    color: var(--color-white);
     padding: var(--spacing-xl) var(--spacing-md);
     max-width: 900px;
     margin: 0 auto;
@@ -898,7 +898,7 @@ select.form-control {
     margin-bottom: var(--spacing-md);
     animation: fadeInUp 1s ease-out;
     letter-spacing: -0.05em;
-    text-shadow: 0 0 40px rgba(255, 152, 0, 0.5);
+    text-shadow: 0 0 40px rgba(229, 57, 53, 0.5);
 }
 
 .hero-title {
@@ -906,7 +906,7 @@ select.form-control {
     font-weight: 900;
     margin-bottom: var(--spacing-md);
     animation: fadeInUp 1s ease-out 0.2s both;
-    text-shadow: 0 2px 10px rgba(255, 152, 0, 0.3);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
 }
 
 .hero-subtitle {
