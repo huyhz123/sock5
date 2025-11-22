@@ -1,0 +1,171 @@
+═══════════════════════════════════════════════════════════════════
+   GSM SERVICES PRO - WORDPRESS THEME
+   Hướng Dẫn Cài Đặt Nhanh
+═══════════════════════════════════════════════════════════════════
+
+📞 LIÊN HỆ HỖ TRỢ:
+   Hotline: +84386355255
+   WhatsApp: +84386355255
+   Zalo: +84386355255
+   Telegram: @hzgsm
+
+═══════════════════════════════════════════════════════════════════
+
+🚀 CÀI ĐẶT THEME (3 BƯỚC ĐƠN GIẢN)
+
+BƯỚC 1: UPLOAD THEME
+   1. Đăng nhập WordPress Admin
+   2. Vào: Giao diện → Themes → Add New
+   3. Click: Upload Theme
+   4. Chọn file: gsm-services-pro.zip
+   5. Click: Install Now → Activate
+
+BƯỚC 2: CẤU HÌNH MENU
+   1. Vào: Giao diện → Menus
+   2. Tạo menu mới tên: "Primary Menu"
+   3. Thêm trang: Trang chủ, Dịch vụ, Blog, Liên hệ
+   4. Chọn vị trí: Primary Menu
+   5. Click: Save Menu
+
+BƯỚC 3: THIẾT LẬP TRANG CHỦ
+   1. Vào: Settings → Reading
+   2. Chọn: A static page
+   3. Posts page: Chọn "Blog" hoặc tạo trang mới
+   4. Click: Save Changes
+
+✅ HOÀN TẤT! Theme đã sẵn sàng sử dụng!
+
+═══════════════════════════════════════════════════════════════════
+
+📱 NỘI DUNG MẪU TỰ ĐỘNG TẠO
+
+Khi activate theme, hệ thống tự động tạo:
+
+✓ 6 DỊCH VỤ MẪU:
+  - iPhone 15 Pro Max Network Unlock (2,500,000 VNĐ)
+  - iPhone 14 Pro Carrier Unlock (1,800,000 VNĐ)
+  - Samsung S24 Ultra Network Unlock (800,000 VNĐ)
+  - IMEI Check & Blacklist Removal (500,000 VNĐ)
+  - iCloud Unlock Premium (3,000,000 VNĐ)
+  - iPhone 13 Network Unlock (1,500,000 VNĐ)
+
+✓ 4 BÀI VIẾT BLOG MẪU
+✓ 4 DANH MỤC DỊCH VỤ
+✓ 2 TRANG: Giới thiệu, Liên hệ
+
+═══════════════════════════════════════════════════════════════════
+
+⚙️ THAY ĐỔI THÔNG TIN LIÊN HỆ
+
+Theme đã cấu hình sẵn:
+   Hotline: +84386355255
+   Telegram: @hzgsm
+
+Để thay đổi:
+   1. Vào: Giao diện → Customize
+   2. Chọn: Contact Information
+   3. Nhập thông tin mới
+   4. Click: Publish
+
+═══════════════════════════════════════════════════════════════════
+
+🎨 THÊM LOGO
+
+   1. Vào: Giao diện → Customize → Site Identity
+   2. Click: Select Logo
+   3. Upload logo (khuyến nghị: 200x60px, PNG)
+   4. Click: Publish
+
+═══════════════════════════════════════════════════════════════════
+
+📝 THÊM DỊCH VỤ MỚI
+
+   1. Vào: GSM Services → Add New
+   2. Nhập:
+      - Tiêu đề dịch vụ
+      - Mô tả chi tiết
+      - Giá (VND)
+      - Thời gian xử lý (vd: 1-3 ngày)
+      - Tỷ lệ thành công (%)
+   3. Chọn danh mục
+   4. Upload ảnh đại diện
+   5. Click: Publish
+
+═══════════════════════════════════════════════════════════════════
+
+✨ TÍNH NĂNG NỔI BẬT
+
+✓ Màu đen chủ đạo - Thiết kế hiện đại, chuyên nghiệp
+✓ Responsive 100% - Tương thích mọi thiết bị
+✓ 4 Nút liên hệ nổi - WhatsApp, Zalo, Telegram, Phone
+✓ SEO Friendly - Tối ưu cho Google
+✓ Tốc độ cao - Load nhanh, ít dung lượng
+✓ Dễ sử dụng - Giao diện thân thiện
+
+═══════════════════════════════════════════════════════════════════
+
+🔧 GỠ LỖI THƯỜNG GẶP
+
+❓ Menu không hiển thị?
+   → Vào Giao diện → Menus → Tạo menu → Gán vào Primary Menu
+
+❓ Dịch vụ mẫu không tạo?
+   → Deactivate theme → Activate lại
+
+❓ Nút floating không hiện?
+   → Kiểm tra file footer.php có <?php wp_footer(); ?>
+   → Xóa cache browser
+
+❓ Muốn xóa dữ liệu mẫu?
+   → Vào GSM Services → All Services → Xóa thủ công
+   → Vào Posts → All Posts → Xóa bài viết mẫu
+
+═══════════════════════════════════════════════════════════════════
+
+📚 TÀI LIỆU THAM KHẢO
+
+Đọc file README.md để biết thêm chi tiết về:
+   - Tùy chỉnh nâng cao
+   - Thay đổi màu sắc
+   - Thêm custom CSS
+   - SEO tips
+   - Marketing strategies
+
+═══════════════════════════════════════════════════════════════════
+
+💡 MẸO SỬ DỤNG
+
+1. Nên cài thêm plugin:
+   - Yoast SEO (SEO tốt hơn)
+   - WP Super Cache (Tăng tốc độ)
+   - Contact Form 7 (Form liên hệ)
+
+2. Tối ưu hình ảnh:
+   - Dùng định dạng WebP
+   - Nén ảnh trước khi upload
+   - Kích thước phù hợp
+
+3. Backup thường xuyên:
+   - Dùng plugin UpdraftPlus
+   - Backup trước khi update
+
+═══════════════════════════════════════════════════════════════════
+
+📞 CẦN HỖ TRỢ?
+
+Liên hệ ngay với chúng tôi:
+
+   📱 Hotline: +84386355255
+   💬 WhatsApp: +84386355255
+   💬 Zalo: +84386355255
+   ✈️ Telegram: @hzgsm
+
+   Hỗ trợ 24/7 - Luôn sẵn sàng giúp bạn!
+
+═══════════════════════════════════════════════════════════════════
+
+🎉 CẢM ƠN BẠN ĐÃ SỬ DỤNG GSM SERVICES PRO THEME!
+
+Chúc bạn kinh doanh thành công! 🚀
+
+═══════════════════════════════════════════════════════════════════
