@@ -10,10 +10,10 @@ if (post_password_required()) {
 $lang = gsm_get_current_language();
 ?>
 
-<div id="comments" class="comments-area" style="margin-top: var(--spacing-xl);">
+<div id="comments" class="comments-area" style="margin-top: var(--sp-12);">
 
     <?php if (have_comments()) : ?>
-        <h3 class="comments-title" style="font-size: 28px; margin-bottom: var(--spacing-lg); display: flex; align-items: center; gap: 12px;">
+        <h3 class="comments-title" style="font-size: 28px; margin-bottom: var(--sp-8); display: flex; align-items: center; gap: 12px;">
             <i class="far fa-comments" style="color: var(--color-primary);"></i>
             <?php
             $comments_number = get_comments_number();
@@ -39,8 +39,8 @@ $lang = gsm_get_current_language();
         </ul>
 
         <?php if (get_comment_pages_count() > 1 && get_option('page_comments')) : ?>
-            <nav class="comment-navigation" style="margin-top: var(--spacing-lg);">
-                <div class="nav-links" style="display: flex; justify-content: space-between; gap: var(--spacing-md);">
+            <nav class="comment-navigation" style="margin-top: var(--sp-8);">
+                <div class="nav-links" style="display: flex; justify-content: space-between; gap: var(--sp-6);">
                     <?php
                     if (get_previous_comments_link()) :
                         ?>
@@ -63,7 +63,7 @@ $lang = gsm_get_current_language();
     <?php endif; ?>
 
     <?php if (!comments_open() && get_comments_number() && post_type_supports(get_post_type(), 'comments')) : ?>
-        <p class="no-comments" style="color: var(--color-gray-light); font-style: italic; padding: var(--spacing-lg); text-align: center; background: var(--color-background); border-radius: var(--border-radius-lg);">
+        <p class="no-comments" style="color: var(--text-light); font-style: italic; padding: var(--sp-8); text-align: center; background: var(--bg); border-radius: var(--r-lg);">
             <?php
             if ($lang === 'en') echo 'Comments are closed.';
             elseif ($lang === 'zh') echo '评论已关闭。';
@@ -80,7 +80,7 @@ $lang = gsm_get_current_language();
         $aria_req = ($req ? " aria-required='true'" : '');
 
         $comment_form_args = array(
-            'title_reply_before' => '<h3 id="reply-title" class="comment-reply-title" style="font-size: 28px; margin-bottom: var(--spacing-lg); display: flex; align-items: center; gap: 12px;"><i class="far fa-edit" style="color: var(--color-primary);"></i>',
+            'title_reply_before' => '<h3 id="reply-title" class="comment-reply-title" style="font-size: 28px; margin-bottom: var(--sp-8); display: flex; align-items: center; gap: 12px;"><i class="far fa-edit" style="color: var(--color-primary);"></i>',
             'title_reply_after' => '</h3>',
             'title_reply' => $lang === 'en' ? 'Leave a Comment' : ($lang === 'zh' ? '发表评论' : 'Để lại bình luận'),
             'title_reply_to' => $lang === 'en' ? 'Leave a Reply to %s' : ($lang === 'zh' ? '回复 %s' : 'Trả lời %s'),
@@ -91,9 +91,9 @@ $lang = gsm_get_current_language();
             'class_submit' => 'btn btn-primary',
             'comment_field' => '<div class="form-group"><label for="comment" class="form-label">' . ($lang === 'en' ? 'Comment' : ($lang === 'zh' ? '评论' : 'Bình luận')) . ($req ? ' <span style="color: var(--color-danger);">*</span>' : '') . '</label><textarea id="comment" name="comment" class="form-control" rows="6" required="required" placeholder="' . ($lang === 'en' ? 'Your comment...' : ($lang === 'zh' ? '您的评论...' : 'Bình luận của bạn...')) . '"></textarea></div>',
             'fields' => array(
-                'author' => '<div class="row" style="margin-bottom: var(--spacing-md);"><div class="col"><div class="form-group"><label for="author" class="form-label">' . ($lang === 'en' ? 'Name' : ($lang === 'zh' ? '姓名' : 'Tên')) . ($req ? ' <span style="color: var(--color-danger);">*</span>' : '') . '</label><input id="author" name="author" type="text" class="form-control" value="' . esc_attr($commenter['comment_author']) . '" ' . ($req ? 'required="required"' : '') . ' placeholder="' . ($lang === 'en' ? 'Your name' : ($lang === 'zh' ? '您的姓名' : 'Tên của bạn')) . '" /></div></div>',
+                'author' => '<div class="row" style="margin-bottom: var(--sp-6);"><div class="col"><div class="form-group"><label for="author" class="form-label">' . ($lang === 'en' ? 'Name' : ($lang === 'zh' ? '姓名' : 'Tên')) . ($req ? ' <span style="color: var(--color-danger);">*</span>' : '') . '</label><input id="author" name="author" type="text" class="form-control" value="' . esc_attr($commenter['comment_author']) . '" ' . ($req ? 'required="required"' : '') . ' placeholder="' . ($lang === 'en' ? 'Your name' : ($lang === 'zh' ? '您的姓名' : 'Tên của bạn')) . '" /></div></div>',
                 'email' => '<div class="col"><div class="form-group"><label for="email" class="form-label">' . ($lang === 'en' ? 'Email' : ($lang === 'zh' ? '电子邮件' : 'Email')) . ($req ? ' <span style="color: var(--color-danger);">*</span>' : '') . '</label><input id="email" name="email" type="email" class="form-control" value="' . esc_attr($commenter['comment_author_email']) . '" ' . ($req ? 'required="required"' : '') . ' placeholder="' . ($lang === 'en' ? 'your@email.com' : ($lang === 'zh' ? '您的邮箱' : 'email@example.com')) . '" /></div></div></div>',
-                'url' => '<div class="form-group" style="margin-bottom: var(--spacing-md);"><label for="url" class="form-label">' . ($lang === 'en' ? 'Website' : ($lang === 'zh' ? '网站' : 'Website')) . '</label><input id="url" name="url" type="url" class="form-control" value="' . esc_attr($commenter['comment_author_url']) . '" placeholder="https://..." /></div>',
+                'url' => '<div class="form-group" style="margin-bottom: var(--sp-6);"><label for="url" class="form-label">' . ($lang === 'en' ? 'Website' : ($lang === 'zh' ? '网站' : 'Website')) . '</label><input id="url" name="url" type="url" class="form-control" value="' . esc_attr($commenter['comment_author_url']) . '" placeholder="https://..." /></div>',
             ),
         );
 
@@ -111,7 +111,7 @@ function gsm_custom_comment($comment, $args, $depth) {
     $lang = gsm_get_current_language();
     ?>
     <li <?php comment_class('comment'); ?> id="comment-<?php comment_ID(); ?>">
-        <article class="comment-body" style="display: flex; gap: var(--spacing-md); padding: var(--spacing-lg); background: var(--color-white); border: var(--border-width) solid var(--border-color); border-radius: var(--border-radius-lg); margin-bottom: var(--spacing-md); transition: var(--transition);">
+        <article class="comment-body" style="display: flex; gap: var(--sp-6); padding: var(--sp-8); background: var(--color-white); border: 1px solid var(--border); border-radius: var(--r-lg); margin-bottom: var(--sp-6); transition: var(--transition);">
 
             <!-- Comment Avatar -->
             <div class="comment-avatar" style="flex-shrink: 0;">
@@ -121,12 +121,12 @@ function gsm_custom_comment($comment, $args, $depth) {
             <!-- Comment Content -->
             <div class="comment-content-wrap" style="flex: 1; min-width: 0;">
                 <!-- Comment Meta -->
-                <div class="comment-meta" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--spacing-sm); margin-bottom: var(--spacing-sm);">
+                <div class="comment-meta" style="display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: var(--sp-3); margin-bottom: var(--sp-3);">
                     <div>
                         <strong class="comment-author-name" style="font-size: 17px; color: var(--color-black); display: block; margin-bottom: 4px;">
                             <?php echo get_comment_author_link(); ?>
                         </strong>
-                        <time class="comment-date" datetime="<?php comment_time('c'); ?>" style="font-size: var(--font-size-sm); color: var(--color-gray-light); display: flex; align-items: center; gap: 6px;">
+                        <time class="comment-date" datetime="<?php comment_time('c'); ?>" style="font-size: var(--text-sm); color: var(--text-light); display: flex; align-items: center; gap: 6px;">
                             <i class="far fa-clock"></i>
                             <?php
                             printf(
@@ -156,7 +156,7 @@ function gsm_custom_comment($comment, $args, $depth) {
 
                 <!-- Comment Text -->
                 <?php if ($comment->comment_approved == '0') : ?>
-                    <p style="color: var(--color-warning); font-style: italic; margin-bottom: var(--spacing-sm); padding: var(--spacing-sm); background: rgba(255, 152, 0, 0.1); border-radius: var(--border-radius-sm);">
+                    <p style="color: var(--color-warning); font-style: italic; margin-bottom: var(--sp-3); padding: var(--sp-3); background: rgba(255, 152, 0, 0.1); border-radius: var(--r-sm);">
                         <i class="fas fa-info-circle"></i>
                         <?php
                         if ($lang === 'en') echo 'Your comment is awaiting moderation.';
@@ -166,7 +166,7 @@ function gsm_custom_comment($comment, $args, $depth) {
                     </p>
                 <?php endif; ?>
 
-                <div class="comment-text" style="color: var(--color-gray-dark); line-height: 1.7; font-size: 16px;">
+                <div class="comment-text" style="color: var(--text); line-height: 1.7; font-size: 16px;">
                     <?php comment_text(); ?>
                 </div>
 
@@ -174,7 +174,7 @@ function gsm_custom_comment($comment, $args, $depth) {
                 <?php
                 edit_comment_link(
                     '<i class="fas fa-edit"></i> ' . ($lang === 'en' ? 'Edit' : ($lang === 'zh' ? '编辑' : 'Sửa')),
-                    '<div class="edit-link" style="margin-top: var(--spacing-sm); font-size: var(--font-size-sm);">',
+                    '<div class="edit-link" style="margin-top: var(--sp-3); font-size: var(--text-sm);">',
                     '</div>'
                 );
                 ?>
@@ -190,22 +190,22 @@ function gsm_custom_comment($comment, $args, $depth) {
 /* Comment form styling */
 .comment-form {
     background: var(--color-white);
-    border: var(--border-width) solid var(--border-color);
-    border-radius: var(--border-radius-lg);
-    padding: var(--spacing-lg);
-    margin-top: var(--spacing-xl);
+    border: 1px solid var(--border);
+    border-radius: var(--r-lg);
+    padding: var(--sp-8);
+    margin-top: var(--sp-12);
 }
 
 .comment-list {
     list-style: none;
     padding: 0;
-    margin: 0 0 var(--spacing-xl) 0;
+    margin: 0 0 var(--sp-12) 0;
 }
 
 .comment-list .children {
     list-style: none;
-    margin-left: var(--spacing-xl);
-    margin-top: var(--spacing-md);
+    margin-left: var(--sp-12);
+    margin-top: var(--sp-6);
     padding-left: 0;
 }
 
@@ -215,14 +215,14 @@ function gsm_custom_comment($comment, $args, $depth) {
 }
 
 .comment-reply-link {
-    font-size: var(--font-size-sm) !important;
+    font-size: var(--text-sm) !important;
     padding: 6px 14px !important;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
     .comment-list .children {
-        margin-left: var(--spacing-md);
+        margin-left: var(--sp-6);
     }
 
     .comment-body {

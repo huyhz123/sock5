@@ -16,7 +16,7 @@
                     }
                     ?>
                 </p>
-                <div class="footer-logo" style="font-size: 48px; font-weight: 900; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-top: var(--spacing-sm);">
+                <div class="footer-logo" style="font-size: 48px; font-weight: 900; background: linear-gradient(135deg,var(--red-50),var(--white)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-top: var(--sp-3);">
                     <?php echo esc_html(get_theme_mod('gsm_logo_text', 'Hz')); ?>
                 </div>
             </div>

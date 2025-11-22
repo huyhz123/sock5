@@ -63,7 +63,7 @@ $lang = gsm_get_current_language();
                             </a>
                         <?php else : ?>
                             <div class="blog-image">
-                                <i class="far fa-newspaper" style="font-size: 80px; color: var(--color-gray-light);"></i>
+                                <i class="far fa-newspaper" style="font-size: 80px; color: var(--text-light);"></i>
                             </div>
                         <?php endif; ?>
 
@@ -103,7 +103,7 @@ $lang = gsm_get_current_language();
                             $categories = get_the_category();
                             if ($categories) :
                                 ?>
-                                <div style="margin-bottom: var(--spacing-sm);">
+                                <div style="margin-bottom: var(--sp-3);">
                                     <?php foreach ($categories as $category) : ?>
                                         <a href="<?php echo esc_url(get_category_link($category->term_id)); ?>" class="product-category" style="display: inline-block; margin-right: 8px; font-size: 13px;">
                                             <?php echo esc_html($category->name); ?>
@@ -123,7 +123,7 @@ $lang = gsm_get_current_language();
 
                 // Pagination
                 ?>
-                <div style="grid-column: 1 / -1; margin-top: var(--spacing-xl);">
+                <div style="grid-column: 1 / -1; margin-top: var(--sp-12);">
                     <?php
                     the_posts_pagination(array(
                         'mid_size' => 2,
@@ -136,18 +136,18 @@ $lang = gsm_get_current_language();
             <?php
             else :
                 ?>
-                <div class="card" style="grid-column: 1 / -1; text-align: center; padding: var(--spacing-xxl);">
-                    <div style="font-size: 80px; margin-bottom: var(--spacing-lg); opacity: 0.3;">
+                <div class="card" style="grid-column: 1 / -1; text-align: center; padding: var(--sp-16);">
+                    <div style="font-size: 80px; margin-bottom: var(--sp-8); opacity: 0.3;">
                         <i class="far fa-folder-open"></i>
                     </div>
-                    <h2 style="color: var(--color-black); margin-bottom: var(--spacing-sm);">
+                    <h2 style="color: var(--color-black); margin-bottom: var(--sp-3);">
                         <?php
                         if ($lang === 'en') echo 'No posts found';
                         elseif ($lang === 'zh') echo '未找到文章';
                         else echo 'Không tìm thấy bài viết';
                         ?>
                     </h2>
-                    <p style="color: var(--color-gray-light); margin-bottom: var(--spacing-lg);">
+                    <p style="color: var(--text-light); margin-bottom: var(--sp-8);">
                         <?php
                         if ($lang === 'en') echo 'Sorry, no posts match your criteria.';
                         elseif ($lang === 'zh') echo '抱歉，没有符合您要求的文章。';
@@ -174,7 +174,7 @@ $lang = gsm_get_current_language();
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: var(--spacing-xs);
+    gap: var(--sp-2);
     flex-wrap: wrap;
 }
 
@@ -184,11 +184,11 @@ $lang = gsm_get_current_language();
     justify-content: center;
     min-width: 44px;
     height: 44px;
-    padding: 0 var(--spacing-sm);
+    padding: 0 var(--sp-3);
     background: var(--color-white);
-    border: var(--border-width) solid var(--border-color);
-    border-radius: var(--border-radius-sm);
-    color: var(--color-gray-dark);
+    border: 1px solid var(--border);
+    border-radius: var(--r-sm);
+    color: var(--text);
     font-weight: 600;
     transition: var(--transition-fast);
     text-decoration: none;
@@ -202,7 +202,7 @@ $lang = gsm_get_current_language();
 }
 
 .pagination .page-numbers.current {
-    background: var(--gradient-primary);
+    background: linear-gradient(135deg,var(--red-50),var(--white));
     border-color: var(--color-primary);
     color: var(--color-black);
     box-shadow: var(--shadow-md);

@@ -22,13 +22,13 @@ $lang = gsm_get_current_language();
             </p>
         </div>
 
-        <div class="row" style="gap: var(--spacing-xl); align-items: flex-start;">
+        <div class="row" style="gap: var(--sp-12); align-items: flex-start;">
 
             <!-- Contact Information -->
             <div class="col" style="flex: 0 0 40%;">
                 <!-- Contact Methods -->
-                <div class="card" style="padding: var(--spacing-lg); margin-bottom: var(--spacing-md);">
-                    <h3 style="font-size: 24px; margin-bottom: var(--spacing-md); display: flex; align-items: center; gap: 10px;">
+                <div class="card" style="padding: var(--sp-8); margin-bottom: var(--sp-6);">
+                    <h3 style="font-size: 24px; margin-bottom: var(--sp-6); display: flex; align-items: center; gap: 10px;">
                         <i class="fas fa-phone-alt" style="color: var(--color-primary);"></i>
                         <?php
                         if ($lang === 'en') echo 'Contact Information';
@@ -37,37 +37,37 @@ $lang = gsm_get_current_language();
                         ?>
                     </h3>
 
-                    <div style="margin-bottom: var(--spacing-lg);">
-                        <div style="display: flex; align-items: center; gap: var(--spacing-md); padding: var(--spacing-md); background: var(--color-background); border-radius: var(--border-radius-md); margin-bottom: var(--spacing-md);">
-                            <div style="width: 50px; height: 50px; background: var(--gradient-primary); border-radius: var(--border-radius-md); display: flex; align-items: center; justify-content: center; font-size: 24px;">
+                    <div style="margin-bottom: var(--sp-8);">
+                        <div style="display: flex; align-items: center; gap: var(--sp-6); padding: var(--sp-6); background: var(--bg); border-radius: var(--r-md); margin-bottom: var(--sp-6);">
+                            <div style="width: 50px; height: 50px; background: linear-gradient(135deg,var(--red-50),var(--white)); border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; font-size: 24px;">
                                 <i class="fas fa-phone-alt"></i>
                             </div>
                             <div>
-                                <div style="font-size: var(--font-size-sm); color: var(--color-gray-light); margin-bottom: 4px;">Hotline</div>
+                                <div style="font-size: var(--text-sm); color: var(--text-light); margin-bottom: 4px;">Hotline</div>
                                 <a href="tel:<?php echo esc_attr(get_theme_mod('gsm_hotline', GSM_HOTLINE)); ?>" style="font-size: 18px; font-weight: 700; color: var(--color-black);">
                                     <?php echo esc_html(get_theme_mod('gsm_hotline', GSM_HOTLINE)); ?>
                                 </a>
                             </div>
                         </div>
 
-                        <div style="display: flex; align-items: center; gap: var(--spacing-md); padding: var(--spacing-md); background: var(--color-background); border-radius: var(--border-radius-md); margin-bottom: var(--spacing-md);">
-                            <div style="width: 50px; height: 50px; background: var(--gradient-primary); border-radius: var(--border-radius-md); display: flex; align-items: center; justify-content: center; font-size: 24px;">
+                        <div style="display: flex; align-items: center; gap: var(--sp-6); padding: var(--sp-6); background: var(--bg); border-radius: var(--r-md); margin-bottom: var(--sp-6);">
+                            <div style="width: 50px; height: 50px; background: linear-gradient(135deg,var(--red-50),var(--white)); border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; font-size: 24px;">
                                 <i class="far fa-envelope"></i>
                             </div>
                             <div>
-                                <div style="font-size: var(--font-size-sm); color: var(--color-gray-light); margin-bottom: 4px;">Email</div>
+                                <div style="font-size: var(--text-sm); color: var(--text-light); margin-bottom: 4px;">Email</div>
                                 <a href="mailto:<?php echo esc_attr(get_theme_mod('gsm_email', 'contact@hzgsm.com')); ?>" style="font-size: 18px; font-weight: 700; color: var(--color-black);">
                                     <?php echo esc_html(get_theme_mod('gsm_email', 'contact@hzgsm.com')); ?>
                                 </a>
                             </div>
                         </div>
 
-                        <div style="display: flex; align-items: center; gap: var(--spacing-md); padding: var(--spacing-md); background: var(--color-background); border-radius: var(--border-radius-md);">
-                            <div style="width: 50px; height: 50px; background: var(--gradient-primary); border-radius: var(--border-radius-md); display: flex; align-items: center; justify-content: center; font-size: 24px;">
+                        <div style="display: flex; align-items: center; gap: var(--sp-6); padding: var(--sp-6); background: var(--bg); border-radius: var(--r-md);">
+                            <div style="width: 50px; height: 50px; background: linear-gradient(135deg,var(--red-50),var(--white)); border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; font-size: 24px;">
                                 <i class="fab fa-telegram-plane"></i>
                             </div>
                             <div>
-                                <div style="font-size: var(--font-size-sm); color: var(--color-gray-light); margin-bottom: 4px;">Telegram</div>
+                                <div style="font-size: var(--text-sm); color: var(--text-light); margin-bottom: 4px;">Telegram</div>
                                 <a href="https://t.me/<?php echo ltrim(get_theme_mod('gsm_telegram', GSM_TELEGRAM), '@'); ?>" target="_blank" style="font-size: 18px; font-weight: 700; color: var(--color-black);">
                                     <?php echo esc_html(get_theme_mod('gsm_telegram', GSM_TELEGRAM)); ?>
                                 </a>
@@ -77,8 +77,8 @@ $lang = gsm_get_current_language();
                 </div>
 
                 <!-- Social Media -->
-                <div class="card card-glass" style="padding: var(--spacing-lg);">
-                    <h3 style="font-size: 20px; margin-bottom: var(--spacing-md);">
+                <div class="card card-glass" style="padding: var(--sp-8);">
+                    <h3 style="font-size: 20px; margin-bottom: var(--sp-6);">
                         <?php
                         if ($lang === 'en') echo 'Connect With Us';
                         elseif ($lang === 'zh') echo '联系我们';
@@ -110,8 +110,8 @@ $lang = gsm_get_current_language();
 
             <!-- Contact Form -->
             <div class="col">
-                <div class="card" style="padding: var(--spacing-xl);">
-                    <h3 style="font-size: 24px; margin-bottom: var(--spacing-md); display: flex; align-items: center; gap: 10px;">
+                <div class="card" style="padding: var(--sp-12);">
+                    <h3 style="font-size: 24px; margin-bottom: var(--sp-6); display: flex; align-items: center; gap: 10px;">
                         <i class="far fa-edit" style="color: var(--color-primary);"></i>
                         <?php
                         if ($lang === 'en') echo 'Send us a message';
@@ -124,7 +124,7 @@ $lang = gsm_get_current_language();
                         <input type="hidden" name="action" value="gsm_contact_form">
                         <?php wp_nonce_field('gsm_contact_form', 'gsm_contact_nonce'); ?>
 
-                        <div class="row" style="margin-bottom: var(--spacing-md);">
+                        <div class="row" style="margin-bottom: var(--sp-6);">
                             <div class="col">
                                 <div class="form-group">
                                     <label for="contact_name" class="form-label">
@@ -152,7 +152,7 @@ $lang = gsm_get_current_language();
                             </div>
                         </div>
 
-                        <div class="form-group" style="margin-bottom: var(--spacing-md);">
+                        <div class="form-group" style="margin-bottom: var(--sp-6);">
                             <label for="contact_phone" class="form-label">
                                 <?php
                                 if ($lang === 'en') echo 'Phone';
@@ -163,7 +163,7 @@ $lang = gsm_get_current_language();
                             <input type="tel" id="contact_phone" name="contact_phone" class="form-control" placeholder="+84...">
                         </div>
 
-                        <div class="form-group" style="margin-bottom: var(--spacing-md);">
+                        <div class="form-group" style="margin-bottom: var(--sp-6);">
                             <label for="contact_subject" class="form-label">
                                 <?php
                                 if ($lang === 'en') echo 'Subject';
@@ -179,7 +179,7 @@ $lang = gsm_get_current_language();
                             ?>">
                         </div>
 
-                        <div class="form-group" style="margin-bottom: var(--spacing-lg);">
+                        <div class="form-group" style="margin-bottom: var(--sp-8);">
                             <label for="contact_message" class="form-label">
                                 <?php
                                 if ($lang === 'en') echo 'Message';
@@ -212,8 +212,8 @@ $lang = gsm_get_current_language();
         <!-- Page Content (if any) -->
         <?php while (have_posts()) : the_post(); ?>
             <?php if (get_the_content()) : ?>
-                <div class="card" style="padding: var(--spacing-xl); margin-top: var(--spacing-xl);">
-                    <div class="page-content" style="color: var(--color-gray-dark); line-height: 1.8;">
+                <div class="card" style="padding: var(--sp-12); margin-top: var(--sp-12);">
+                    <div class="page-content" style="color: var(--text); line-height: 1.8;">
                         <?php the_content(); ?>
                     </div>
                 </div>

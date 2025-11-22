@@ -19,19 +19,19 @@ $lang = gsm_get_current_language();
                 </header>
 
                 <!-- Page Content -->
-                <div class="card" style="padding: var(--spacing-xl);">
+                <div class="card" style="padding: var(--sp-12);">
                     <?php if (has_post_thumbnail()) : ?>
-                        <div style="margin-bottom: var(--spacing-lg);">
-                            <?php the_post_thumbnail('large', array('style' => 'width: 100%; height: auto; border-radius: var(--border-radius-md);')); ?>
+                        <div style="margin-bottom: var(--sp-8);">
+                            <?php the_post_thumbnail('large', array('style' => 'width: 100%; height: auto; border-radius: var(--r-md);')); ?>
                         </div>
                     <?php endif; ?>
 
-                    <div class="page-content" style="color: var(--color-gray-dark); line-height: 1.8; font-size: 17px;">
+                    <div class="page-content" style="color: var(--text); line-height: 1.8; font-size: 17px;">
                         <?php
                         the_content();
 
                         wp_link_pages(array(
-                            'before' => '<div class="page-links" style="margin-top: var(--spacing-lg); padding-top: var(--spacing-lg); border-top: var(--border-width) solid var(--border-color);">',
+                            'before' => '<div class="page-links" style="margin-top: var(--sp-8); padding-top: var(--sp-8); border-top: 1px solid var(--border);">',
                             'after' => '</div>',
                         ));
                         ?>

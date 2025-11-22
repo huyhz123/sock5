@@ -30,13 +30,13 @@ $lang = gsm_get_current_language();
         </div>
 
         <!-- Service Categories -->
-        <div class="grid grid-4" style="margin-bottom: var(--spacing-xl);">
-            <div class="card card-neu" style="padding: var(--spacing-lg); text-align: center; cursor: pointer;" onclick="location.href='<?php echo esc_url(get_post_type_archive_link('gsm_service')); ?>'">
-                <div style="font-size: 48px; margin-bottom: var(--spacing-sm);">🔧</div>
-                <h3 style="margin-bottom: var(--spacing-sm);">
+        <div class="grid grid-4" style="margin-bottom: var(--sp-12);">
+            <div class="card card-neu" style="padding: var(--sp-8); text-align: center; cursor: pointer;" onclick="location.href='<?php echo esc_url(get_post_type_archive_link('gsm_service')); ?>'">
+                <div style="font-size: 48px; margin-bottom: var(--sp-3);">🔧</div>
+                <h3 style="margin-bottom: var(--sp-3);">
                     <?php echo gsm_t('services'); ?>
                 </h3>
-                <p style="color: var(--color-gray); font-size: 14px;">
+                <p style="color: var(--text); font-size: 14px;">
                     <?php
                     $count = wp_count_posts('gsm_service');
                     echo $count->publish . ' ' . ($lang === 'en' ? 'services' : ($lang === 'zh' ? '项服务' : 'dịch vụ'));
@@ -44,12 +44,12 @@ $lang = gsm_get_current_language();
                 </p>
             </div>
 
-            <div class="card card-neu" style="padding: var(--spacing-lg); text-align: center; cursor: pointer;" onclick="location.href='<?php echo esc_url(get_post_type_archive_link('gsm_account')); ?>'">
-                <div style="font-size: 48px; margin-bottom: var(--spacing-sm);">👤</div>
-                <h3 style="margin-bottom: var(--spacing-sm);">
+            <div class="card card-neu" style="padding: var(--sp-8); text-align: center; cursor: pointer;" onclick="location.href='<?php echo esc_url(get_post_type_archive_link('gsm_account')); ?>'">
+                <div style="font-size: 48px; margin-bottom: var(--sp-3);">👤</div>
+                <h3 style="margin-bottom: var(--sp-3);">
                     <?php echo gsm_t('accounts'); ?>
                 </h3>
-                <p style="color: var(--color-gray); font-size: 14px;">
+                <p style="color: var(--text); font-size: 14px;">
                     <?php
                     $count = wp_count_posts('gsm_account');
                     echo $count->publish . ' ' . ($lang === 'en' ? 'accounts' : ($lang === 'zh' ? '个账户' : 'tài khoản'));
@@ -57,12 +57,12 @@ $lang = gsm_get_current_language();
                 </p>
             </div>
 
-            <div class="card card-neu" style="padding: var(--spacing-lg); text-align: center; cursor: pointer;" onclick="location.href='<?php echo esc_url(get_post_type_archive_link('gsm_phone')); ?>'">
-                <div style="font-size: 48px; margin-bottom: var(--spacing-sm);">📱</div>
-                <h3 style="margin-bottom: var(--spacing-sm);">
+            <div class="card card-neu" style="padding: var(--sp-8); text-align: center; cursor: pointer;" onclick="location.href='<?php echo esc_url(get_post_type_archive_link('gsm_phone')); ?>'">
+                <div style="font-size: 48px; margin-bottom: var(--sp-3);">📱</div>
+                <h3 style="margin-bottom: var(--sp-3);">
                     <?php echo gsm_t('phones'); ?>
                 </h3>
-                <p style="color: var(--color-gray); font-size: 14px;">
+                <p style="color: var(--text); font-size: 14px;">
                     <?php
                     $count = wp_count_posts('gsm_phone');
                     echo $count->publish . ' ' . ($lang === 'en' ? 'phones' : ($lang === 'zh' ? '部手机' : 'điện thoại'));
@@ -70,12 +70,12 @@ $lang = gsm_get_current_language();
                 </p>
             </div>
 
-            <div class="card card-neu" style="padding: var(--spacing-lg); text-align: center; cursor: pointer;" onclick="location.href='<?php echo esc_url(get_post_type_archive_link('gsm_part')); ?>'">
-                <div style="font-size: 48px; margin-bottom: var(--spacing-sm);">⚙️</div>
-                <h3 style="margin-bottom: var(--spacing-sm);">
+            <div class="card card-neu" style="padding: var(--sp-8); text-align: center; cursor: pointer;" onclick="location.href='<?php echo esc_url(get_post_type_archive_link('gsm_part')); ?>'">
+                <div style="font-size: 48px; margin-bottom: var(--sp-3);">⚙️</div>
+                <h3 style="margin-bottom: var(--sp-3);">
                     <?php echo gsm_t('parts'); ?>
                 </h3>
-                <p style="color: var(--color-gray); font-size: 14px;">
+                <p style="color: var(--text); font-size: 14px;">
                     <?php
                     $count = wp_count_posts('gsm_part');
                     echo $count->publish . ' ' . ($lang === 'en' ? 'parts' : ($lang === 'zh' ? '个配件' : 'linh kiện'));
@@ -85,7 +85,7 @@ $lang = gsm_get_current_language();
         </div>
 
         <!-- Featured Services -->
-        <h2 class="section-title" style="font-size: 32px; margin-bottom: var(--spacing-lg); margin-top: var(--spacing-xl);">
+        <h2 class="section-title" style="font-size: 32px; margin-bottom: var(--sp-8); margin-top: var(--sp-12);">
             <?php
             if ($lang === 'en') echo 'Featured Services';
             elseif ($lang === 'zh') echo '特色服务';
@@ -167,7 +167,7 @@ $lang = gsm_get_current_language();
                 wp_reset_postdata();
             else :
                 ?>
-                <p style="grid-column: 1 / -1; text-align: center; color: var(--color-gray-light);">
+                <p style="grid-column: 1 / -1; text-align: center; color: var(--text-light);">
                     <?php
                     if ($lang === 'en') echo 'No services available yet.';
                     elseif ($lang === 'zh') echo '暂无服务。';
@@ -178,8 +178,8 @@ $lang = gsm_get_current_language();
         </div>
 
         <!-- Why Choose Us -->
-        <div class="card" style="margin-top: var(--spacing-xxl); padding: var(--spacing-xl); background: var(--gradient-bright);">
-            <h2 style="text-align: center; margin-bottom: var(--spacing-lg); font-size: 36px;">
+        <div class="card" style="margin-top: var(--sp-16); padding: var(--sp-12); background: var(--gradient-bright);">
+            <h2 style="text-align: center; margin-bottom: var(--sp-8); font-size: 36px;">
                 <?php
                 if ($lang === 'en') echo 'Why Choose Our Services?';
                 elseif ($lang === 'zh') echo '为什么选择我们的服务？';
@@ -188,16 +188,16 @@ $lang = gsm_get_current_language();
             </h2>
 
             <div class="grid grid-3">
-                <div style="text-align: center; padding: var(--spacing-md);">
-                    <div style="font-size: 56px; margin-bottom: var(--spacing-md);">⚡</div>
-                    <h3 style="margin-bottom: var(--spacing-sm);">
+                <div style="text-align: center; padding: var(--sp-6);">
+                    <div style="font-size: 56px; margin-bottom: var(--sp-6);">⚡</div>
+                    <h3 style="margin-bottom: var(--sp-3);">
                         <?php
                         if ($lang === 'en') echo 'Fast Service';
                         elseif ($lang === 'zh') echo '快速服务';
                         else echo 'Dịch Vụ Nhanh';
                         ?>
                     </h3>
-                    <p style="color: var(--color-gray);">
+                    <p style="color: var(--text);">
                         <?php
                         if ($lang === 'en') echo 'Quick turnaround time';
                         elseif ($lang === 'zh') echo '快速周转时间';
@@ -206,16 +206,16 @@ $lang = gsm_get_current_language();
                     </p>
                 </div>
 
-                <div style="text-align: center; padding: var(--spacing-md);">
-                    <div style="font-size: 56px; margin-bottom: var(--spacing-md);">✅</div>
-                    <h3 style="margin-bottom: var(--spacing-sm);">
+                <div style="text-align: center; padding: var(--sp-6);">
+                    <div style="font-size: 56px; margin-bottom: var(--sp-6);">✅</div>
+                    <h3 style="margin-bottom: var(--sp-3);">
                         <?php
                         if ($lang === 'en') echo 'Guaranteed';
                         elseif ($lang === 'zh') echo '保证';
                         else echo 'Đảm Bảo';
                         ?>
                     </h3>
-                    <p style="color: var(--color-gray);">
+                    <p style="color: var(--text);">
                         <?php
                         if ($lang === 'en') echo '100% success guarantee';
                         elseif ($lang === 'zh') echo '100%成功保证';
@@ -224,16 +224,16 @@ $lang = gsm_get_current_language();
                     </p>
                 </div>
 
-                <div style="text-align: center; padding: var(--spacing-md);">
-                    <div style="font-size: 56px; margin-bottom: var(--spacing-md);">💰</div>
-                    <h3 style="margin-bottom: var(--spacing-sm);">
+                <div style="text-align: center; padding: var(--sp-6);">
+                    <div style="font-size: 56px; margin-bottom: var(--sp-6);">💰</div>
+                    <h3 style="margin-bottom: var(--sp-3);">
                         <?php
                         if ($lang === 'en') echo 'Best Price';
                         elseif ($lang === 'zh') echo '最优价格';
                         else echo 'Giá Tốt Nhất';
                         ?>
                     </h3>
-                    <p style="color: var(--color-gray);">
+                    <p style="color: var(--text);">
                         <?php
                         if ($lang === 'en') echo 'Competitive pricing';
                         elseif ($lang === 'zh') echo '有竞争力的价格';
@@ -247,8 +247,8 @@ $lang = gsm_get_current_language();
         <!-- Page Content -->
         <?php while (have_posts()) : the_post(); ?>
             <?php if (get_the_content()) : ?>
-                <div class="card" style="padding: var(--spacing-xl); margin-top: var(--spacing-xl);">
-                    <div class="page-content" style="color: var(--color-gray-dark); line-height: 1.8;">
+                <div class="card" style="padding: var(--sp-12); margin-top: var(--sp-12);">
+                    <div class="page-content" style="color: var(--text); line-height: 1.8;">
                         <?php the_content(); ?>
                     </div>
                 </div>

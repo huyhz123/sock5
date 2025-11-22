@@ -161,7 +161,7 @@ $post_type = get_post_type();
 
                 // Pagination
                 ?>
-                <div style="grid-column: 1 / -1; margin-top: var(--spacing-xl);">
+                <div style="grid-column: 1 / -1; margin-top: var(--sp-12);">
                     <?php
                     the_posts_pagination(array(
                         'mid_size' => 2,
@@ -173,18 +173,18 @@ $post_type = get_post_type();
             <?php
             else :
                 ?>
-                <div class="card" style="grid-column: 1 / -1; text-align: center; padding: var(--spacing-xxl);">
-                    <div style="font-size: 80px; margin-bottom: var(--spacing-lg); opacity: 0.3;">
+                <div class="card" style="grid-column: 1 / -1; text-align: center; padding: var(--sp-16);">
+                    <div style="font-size: 80px; margin-bottom: var(--sp-8); opacity: 0.3;">
                         <i class="far fa-folder-open"></i>
                     </div>
-                    <h2 style="color: var(--color-black); margin-bottom: var(--spacing-sm);">
+                    <h2 style="color: var(--black); margin-bottom: var(--sp-3);">
                         <?php
                         if ($lang === 'en') echo 'No products found';
                         elseif ($lang === 'zh') echo '未找到产品';
                         else echo 'Không tìm thấy sản phẩm';
                         ?>
                     </h2>
-                    <p style="color: var(--color-gray-light); margin-bottom: var(--spacing-lg);">
+                    <p style="color: var(--text-light); margin-bottom: var(--sp-8);">
                         <?php
                         if ($lang === 'en') echo 'Sorry, no products match your criteria.';
                         elseif ($lang === 'zh') echo '抱歉，没有符合您要求的产品。';
