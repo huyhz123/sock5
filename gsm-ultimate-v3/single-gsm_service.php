@@ -1,7 +1,10 @@
 <?php
 /**
- * Single Product Template - Modern 2025 Design
+ * Single Custom Product Template - Modern 2025 Design
  * Used for: gsm_service, gsm_account, gsm_phone, gsm_part
+ *
+ * NOTE: This template is for CUSTOM POST TYPES only.
+ * WooCommerce products will use WooCommerce's own templates.
  */
 
 get_header();
