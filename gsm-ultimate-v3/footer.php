@@ -16,7 +16,7 @@
                     }
                     ?>
                 </p>
-                <div class="footer-logo" style="font-size: 48px; font-weight: 900; background: var(--gradient-primary); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-top: var(--spacing-sm);">
+                <div class="footer-logo" style="font-size: 48px; font-weight: 900; background: linear-gradient(135deg,var(--red-50),var(--white)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin-top: var(--sp-3);">
                     <?php echo esc_html(get_theme_mod('gsm_logo_text', 'Hz')); ?>
                 </div>
             </div>
@@ -25,10 +25,10 @@
             <div class="footer-widget">
                 <h3><?php echo gsm_t('services'); ?></h3>
                 <ul>
-                    <li><a href="<?php echo esc_url(home_url('/services/')); ?>"><?php echo gsm_t('services'); ?></a></li>
-                    <li><a href="<?php echo esc_url(home_url('/accounts/')); ?>"><?php echo gsm_t('accounts'); ?></a></li>
-                    <li><a href="<?php echo esc_url(home_url('/phones/')); ?>"><?php echo gsm_t('phones'); ?></a></li>
-                    <li><a href="<?php echo esc_url(home_url('/parts/')); ?>"><?php echo gsm_t('parts'); ?></a></li>
+                    <li><a href="<?php echo esc_url(get_post_type_archive_link('gsm_service')); ?>"><?php echo gsm_t('services'); ?></a></li>
+                    <li><a href="<?php echo esc_url(get_post_type_archive_link('gsm_account')); ?>"><?php echo gsm_t('accounts'); ?></a></li>
+                    <li><a href="<?php echo esc_url(get_post_type_archive_link('gsm_phone')); ?>"><?php echo gsm_t('phones'); ?></a></li>
+                    <li><a href="<?php echo esc_url(get_post_type_archive_link('gsm_part')); ?>"><?php echo gsm_t('parts'); ?></a></li>
                 </ul>
             </div>
 

@@ -1,6 +1,6 @@
-# GSM Ultimate v3.0 - WordPress Theme
+# GSM Ultimate v3.5 - WordPress Theme
 
-**Professional GSM Services Theme with Multi-language, Multi-currency & API Integration**
+**Professional GSM Services Theme - Modern 2025 Edition with Optimized CSS & WooCommerce**
 
 ## 📋 Features
 
@@ -284,7 +284,7 @@ http://www.gnu.org/licenses/gpl-2.0.html
 ## 🎉 Credits
 
 **Theme by:** HzGSM
-**Version:** 3.0.0
+**Version:** 3.5.0
 **Release Date:** 2025
 
 ### Libraries Used:
@@ -294,6 +294,85 @@ http://www.gnu.org/licenses/gpl-2.0.html
 - Google Fonts (Inter)
 
 ## 🔄 Changelog
+
+### Version 3.5.0 (2025) - MODERN 2025 EDITION 🚀✨
+- ✅ **COMPLETE CSS REDESIGN:** 81% reduction (1455 → 276 lines) while adding features!
+- ✅ **2025 DESIGN TOKENS:** Modern CSS variables system with semantic naming
+- ✅ **PROFESSIONAL RED THEME:** (#DC2626) with optimized color palette
+- ✅ **MOBILE-FIRST DESIGN:** Touch-friendly buttons (44px+), responsive grid
+- ✅ **SEO OPTIMIZED 2025:** Semantic HTML, proper heading hierarchy
+- ✅ **35 WOOCOMMERCE PRODUCTS:** Increased from 15 to 35 sample products
+  - 10 Smartphones (iPhone 15, Samsung S24, Xiaomi, etc.)
+  - 8 Services (IMEI check, unlock, repair, etc.)
+  - 7 Accessories (AirPods, cases, chargers, etc.)
+  - 5 Parts (screens, batteries, cameras)
+  - 5 Accounts (iCloud, Google, Netflix, etc.)
+- ✅ **ACCESSIBILITY:** Focus states, reduced motion support, ARIA labels
+- ✅ **PERFORMANCE:** Minified CSS, optimized load times
+- ✅ **PROPER COLOR CONTRAST:** All text readable on all backgrounds
+- ✅ **VALIDATED CODE:** All PHP and CSS validated error-free
+- ✅ **MODERN SHADOWS:** 2025-style soft shadows with proper opacity
+- ✅ **RESPONSIVE BREAKPOINTS:** 640px, 768px, 1024px optimized
+- ✅ Production-ready for modern 2025 websites
+
+### Version 3.4.0 (2025) - WHITE BLACK RED EDITION 🔴⚫⚪
+- ✅ **NEW COLOR SCHEME:** Complete redesign with White-Black-Red theme
+- ✅ **WOOCOMMERCE:** Full WooCommerce integration and support
+- ✅ **WOOCOMMERCE PRODUCTS:** 15 sample WooCommerce products auto-created
+- ✅ **AUTO CACHE CLEAR:** Cache clears automatically when switching language/currency
+- ✅ **FIXED TEXT READABILITY:** All text colors optimized for better contrast
+- ✅ **NEW COLORS:**
+  - Primary: Red (#e53935) instead of Orange
+  - Black: True black (#000000) for better contrast
+  - Background: Pure white (#ffffff)
+  - Gradients updated to red theme
+- ✅ **HERO BANNER:** Darker overlay with better text visibility
+- ✅ **HERO TEXT:** White text on dark background for perfect readability
+- ✅ **BACKGROUND PATTERN:** Subtle red grid pattern
+- ✅ **ALL SHADOWS:** Updated to match red theme
+- ✅ WooCommerce product gallery support (zoom, lightbox, slider)
+- ✅ Sample products include: smartphones, services, accessories, parts, accounts
+- ✅ Production-ready WooCommerce theme
+
+### Version 3.3.0 (2025) - PERFECT EDITION ✨
+- ✅ **FIXED:** Instant language switching (no delay!)
+- ✅ **FIXED:** Instant currency switching (immediate reload)
+- ✅ **FIXED:** All navigation links now use correct archive URLs
+- ✅ **FIXED:** Template bugs in header, footer, and single product pages
+- ✅ **NEW:** Dedicated services page template (page-services.php)
+- ✅ **NEW:** Massive sample content (52 products + 20 blog posts)
+- ✅ **OPTIMIZED:** All colors perfected for ultra bright theme
+- ✅ **OPTIMIZED:** Removed all dark gradients and shadows
+- ✅ **OPTIMIZED:** Hero banner with bright orange gradient
+- ✅ **OPTIMIZED:** Footer and header with bright backgrounds
+- ✅ **OPTIMIZED:** All text colors optimized for bright theme
+- ✅ Complete bug fixes and optimization
+- ✅ Production-ready stable release
+
+### Version 3.2.0 (2025) - ULTRA BRIGHT WHITE EDITION ⚡
+- ✅ **NEW:** Ultra bright white theme (Canh Dương - Cực sáng!)
+- ✅ **NEW:** Animated Hz logo with gradient & shadow effects
+- ✅ **NEW:** Subtle grid background pattern
+- ✅ Updated to pure white background (#ffffff)
+- ✅ Soft text colors for better readability (#2c3e50)
+- ✅ Ultra light borders (#f0f0f0)
+- ✅ Very soft shadows (4-10% opacity)
+- ✅ Removed dark mode support
+- ✅ Improved contrast throughout
+- ✅ All links validated and working
+- ✅ Enhanced glassmorphism effects
+- ✅ Optimized CSS for ultra bright theme
+
+### Version 3.1.0 (2025) - BRIGHT EDITION
+- ✅ **NEW:** Bright modern UI theme (no more dark!)
+- ✅ **NEW:** Auto cache clear system (supports all major plugins)
+- ✅ **NEW:** Optimized language system with caching
+- ✅ **NEW:** Clear Cache button in admin bar
+- ✅ **NEW:** Daily auto cache clear scheduled
+- ✅ Updated color scheme to bright/light theme
+- ✅ Improved glassmorphism with lighter tones
+- ✅ Enhanced performance with translation caching
+- ✅ Better language cookie handling
 
 ### Version 3.0.0 (2025)
 - ✅ Fixed multi-language switching (WordPress i18n)

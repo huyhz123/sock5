@@ -1,7 +1,10 @@
 <?php
 /**
- * Single Product Template - Modern 2025 Design
+ * Single Custom Product Template - Modern 2025 Design
  * Used for: gsm_service, gsm_account, gsm_phone, gsm_part
+ *
+ * NOTE: This template is for CUSTOM POST TYPES only.
+ * WooCommerce products will use WooCommerce's own templates.
  */
 
 get_header();
@@ -19,7 +22,7 @@ $warranty = get_post_meta(get_the_ID(), '_gsm_warranty', true);
         <?php while (have_posts()) : the_post(); ?>
 
             <!-- Breadcrumb -->
-            <div style="margin-bottom: var(--spacing-md); font-size: var(--font-size-sm); color: var(--color-gray-light);">
+            <div style="margin-bottom: var(--sp-6); font-size: var(--text-sm); color: var(--text-light);">
                 <a href="<?php echo esc_url(home_url('/')); ?>"><?php echo gsm_t('home'); ?></a>
                 <span> / </span>
                 <a href="<?php echo esc_url(get_post_type_archive_link(get_post_type())); ?>">
@@ -29,16 +32,16 @@ $warranty = get_post_meta(get_the_ID(), '_gsm_warranty', true);
                 <span><?php the_title(); ?></span>
             </div>
 
-            <div class="row" style="gap: var(--spacing-xl); align-items: flex-start;">
+            <div class="row" style="gap: var(--sp-12); align-items: flex-start;">
 
                 <!-- Product Gallery Column -->
                 <div class="col" style="flex: 0 0 45%; max-width: 600px;">
                     <!-- Main Product Image -->
-                    <div class="card" style="padding: var(--spacing-lg); text-align: center; margin-bottom: var(--spacing-md);">
+                    <div class="card" style="padding: var(--sp-8); text-align: center; margin-bottom: var(--sp-6);">
                         <?php if (has_post_thumbnail()) : ?>
-                            <?php the_post_thumbnail('large', array('style' => 'max-width: 100%; height: auto; border-radius: var(--border-radius-md);')); ?>
+                            <?php the_post_thumbnail('large', array('style' => 'max-width: 100%; height: auto; border-radius: var(--r-md);')); ?>
                         <?php else : ?>
-                            <div style="font-size: 150px; padding: var(--spacing-xl); background: var(--color-background); border-radius: var(--border-radius-md);">
+                            <div style="font-size: 150px; padding: var(--sp-12); background: var(--bg); border-radius: var(--r-md);">
                                 <?php
                                 $post_type = get_post_type();
                                 $icons = array(
@@ -54,9 +57,9 @@ $warranty = get_post_meta(get_the_ID(), '_gsm_warranty', true);
                     </div>
 
                     <!-- Product Features Card -->
-                    <div class="card card-glass" style="padding: var(--spacing-lg);">
-                        <h3 style="color: var(--color-black); margin-bottom: var(--spacing-md); font-size: 20px; display: flex; align-items: center; gap: 10px;">
-                            <i class="fas fa-star" style="color: var(--color-primary);"></i>
+                    <div class="card card-glass" style="padding: var(--sp-8);">
+                        <h3 style="color: var(--black); margin-bottom: var(--sp-6); font-size: 20px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-star" style="color: var(--primary);"></i>
                             <?php
                             if ($lang === 'en') echo 'Key Features';
                             elseif ($lang === 'zh') echo '主要特点';
@@ -64,8 +67,8 @@ $warranty = get_post_meta(get_the_ID(), '_gsm_warranty', true);
                             ?>
                         </h3>
                         <ul style="list-style: none; padding: 0;">
-                            <li style="padding: 12px 0; border-bottom: var(--border-width) solid var(--border-color); display: flex; align-items: center; gap: 12px;">
-                                <i class="fas fa-check-circle" style="color: var(--color-success); font-size: 18px;"></i>
+                            <li style="padding: 12px 0; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px;">
+                                <i class="fas fa-check-circle" style="color: var(--success); font-size: 18px;"></i>
                                 <span>
                                     <?php
                                     if ($lang === 'en') echo 'High quality guaranteed';
@@ -74,8 +77,8 @@ $warranty = get_post_meta(get_the_ID(), '_gsm_warranty', true);
                                     ?>
                                 </span>
                             </li>
-                            <li style="padding: 12px 0; border-bottom: var(--border-width) solid var(--border-color); display: flex; align-items: center; gap: 12px;">
-                                <i class="fas fa-check-circle" style="color: var(--color-success); font-size: 18px;"></i>
+                            <li style="padding: 12px 0; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px;">
+                                <i class="fas fa-check-circle" style="color: var(--success); font-size: 18px;"></i>
                                 <span>
                                     <?php
                                     if ($lang === 'en') echo 'Fast delivery';
@@ -84,12 +87,12 @@ $warranty = get_post_meta(get_the_ID(), '_gsm_warranty', true);
                                     ?>
                                 </span>
                             </li>
-                            <li style="padding: 12px 0; border-bottom: var(--border-width) solid var(--border-color); display: flex; align-items: center; gap: 12px;">
-                                <i class="fas fa-check-circle" style="color: var(--color-success); font-size: 18px;"></i>
+                            <li style="padding: 12px 0; border-bottom: 1px solid var(--border); display: flex; align-items: center; gap: 12px;">
+                                <i class="fas fa-check-circle" style="color: var(--success); font-size: 18px;"></i>
                                 <span>24/7 Support</span>
                             </li>
                             <li style="padding: 12px 0; display: flex; align-items: center; gap: 12px;">
-                                <i class="fas fa-check-circle" style="color: var(--color-success); font-size: 18px;"></i>
+                                <i class="fas fa-check-circle" style="color: var(--success); font-size: 18px;"></i>
                                 <span>
                                     <?php
                                     if ($lang === 'en') echo 'Money back guarantee';
@@ -105,34 +108,34 @@ $warranty = get_post_meta(get_the_ID(), '_gsm_warranty', true);
                 <!-- Product Info Column -->
                 <div class="col" style="flex: 1;">
                     <!-- Product Title & Category -->
-                    <div style="margin-bottom: var(--spacing-md);">
+                    <div style="margin-bottom: var(--sp-6);">
                         <?php
                         $taxonomy = get_post_type() . '_category';
                         $terms = get_the_terms(get_the_ID(), $taxonomy);
                         if ($terms && !is_wp_error($terms)) :
                             foreach ($terms as $term) :
                                 ?>
-                                <a href="<?php echo esc_url(get_term_link($term)); ?>" class="product-category" style="display: inline-block; margin-bottom: var(--spacing-sm);">
+                                <a href="<?php echo esc_url(get_term_link($term)); ?>" class="product-category" style="display: inline-block; margin-bottom: var(--sp-3);">
                                     <?php echo esc_html($term->name); ?>
                                 </a>
                             <?php endforeach;
                         endif;
                         ?>
 
-                        <h1 style="font-size: clamp(28px, 4vw, 42px); margin-bottom: var(--spacing-sm); color: var(--color-black); line-height: 1.3;">
+                        <h1 style="font-size: clamp(28px, 4vw, 42px); margin-bottom: var(--sp-3); color: var(--black); line-height: 1.3;">
                             <?php the_title(); ?>
                         </h1>
 
                         <?php if ($sku) : ?>
-                            <div style="color: var(--color-gray-light); font-size: var(--font-size-sm); margin-bottom: var(--spacing-md);">
-                                SKU: <strong style="color: var(--color-gray);"><?php echo esc_html($sku); ?></strong>
+                            <div style="color: var(--text-light); font-size: var(--text-sm); margin-bottom: var(--sp-6);">
+                                SKU: <strong style="color: var(--text);"><?php echo esc_html($sku); ?></strong>
                             </div>
                         <?php endif; ?>
                     </div>
 
                     <!-- Price Card - Glassmorphism -->
-                    <div class="card" style="padding: var(--spacing-lg); margin-bottom: var(--spacing-md); background: var(--gradient-primary); color: var(--color-black);">
-                        <div style="display: flex; justify-content: space-between; align-items: center; gap: var(--spacing-md); flex-wrap: wrap;">
+                    <div class="card" style="padding: var(--sp-8); margin-bottom: var(--sp-6); background: linear-gradient(135deg,var(--red-50),var(--white)); color: var(--black);">
+                        <div style="display: flex; justify-content: space-between; align-items: center; gap: var(--sp-6); flex-wrap: wrap;">
                             <div>
                                 <div style="font-size: 14px; opacity: 0.8; margin-bottom: 5px; font-weight: 600;">
                                     <?php echo gsm_t('price'); ?>:
@@ -156,7 +159,7 @@ $warranty = get_post_meta(get_the_ID(), '_gsm_warranty', true);
                             </div>
 
                             <?php if ($stock) : ?>
-                                <div class="product-stock <?php echo esc_attr($stock); ?>" style="padding: 12px 24px; border-radius: var(--border-radius-md); font-size: 18px;">
+                                <div class="product-stock <?php echo esc_attr($stock); ?>" style="padding: 12px 24px; border-radius: var(--r-md); font-size: 18px;">
                                     <?php echo gsm_t($stock); ?>
                                 </div>
                             <?php endif; ?>
@@ -165,20 +168,20 @@ $warranty = get_post_meta(get_the_ID(), '_gsm_warranty', true);
 
                     <!-- Additional Info Grid -->
                     <?php if ($warranty) : ?>
-                        <div class="card" style="padding: var(--spacing-lg); margin-bottom: var(--spacing-md);">
-                            <div style="display: flex; align-items: center; gap: var(--spacing-sm);">
-                                <div style="width: 50px; height: 50px; background: var(--gradient-primary); border-radius: var(--border-radius-md); display: flex; align-items: center; justify-content: center; font-size: 24px;">
+                        <div class="card" style="padding: var(--sp-8); margin-bottom: var(--sp-6);">
+                            <div style="display: flex; align-items: center; gap: var(--sp-3);">
+                                <div style="width: 50px; height: 50px; background: linear-gradient(135deg,var(--red-50),var(--white)); border-radius: var(--r-md); display: flex; align-items: center; justify-content: center; font-size: 24px;">
                                     <i class="fas fa-shield-alt"></i>
                                 </div>
                                 <div>
-                                    <div style="font-size: var(--font-size-sm); color: var(--color-gray-light); margin-bottom: 4px;">
+                                    <div style="font-size: var(--text-sm); color: var(--text-light); margin-bottom: 4px;">
                                         <?php
                                         if ($lang === 'en') echo 'Warranty';
                                         elseif ($lang === 'zh') echo '保修';
                                         else echo 'Bảo hành';
                                         ?>
                                     </div>
-                                    <div style="font-size: 20px; font-weight: 700; color: var(--color-success);">
+                                    <div style="font-size: 20px; font-weight: 700; color: var(--success);">
                                         <?php echo esc_html($warranty); ?>
                                     </div>
                                 </div>
@@ -187,13 +190,13 @@ $warranty = get_post_meta(get_the_ID(), '_gsm_warranty', true);
                     <?php endif; ?>
 
                     <!-- Buy Now Button -->
-                    <a href="tel:<?php echo esc_attr(get_theme_mod('gsm_hotline', GSM_HOTLINE)); ?>" class="btn btn-primary btn-block btn-lg" style="margin-bottom: var(--spacing-md); font-size: 20px; padding: 20px;">
+                    <a href="tel:<?php echo esc_attr(get_theme_mod('gsm_hotline', GSM_HOTLINE)); ?>" class="btn btn-primary btn-block btn-lg" style="margin-bottom: var(--sp-6); font-size: 20px; padding: 20px;">
                         <i class="fas fa-shopping-cart"></i> <?php echo gsm_t('buy_now'); ?>
                     </a>
 
                     <!-- Contact Methods Grid -->
-                    <div class="card" style="padding: var(--spacing-lg); background: var(--gradient-dark); color: var(--color-white);">
-                        <h3 style="margin-bottom: var(--spacing-md); font-size: 18px; font-weight: 700;">
+                    <div class="card card-glass" style="padding: var(--sp-8); border: 2px solid var(--primary);">
+                        <h3 style="margin-bottom: var(--sp-6); font-size: 18px; font-weight: 700; color: var(--black);">
                             <?php
                             if ($lang === 'en') echo 'Contact Now';
                             elseif ($lang === 'zh') echo '立即联系';
@@ -201,7 +204,7 @@ $warranty = get_post_meta(get_the_ID(), '_gsm_warranty', true);
                             ?>
                         </h3>
                         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
-                            <a href="tel:<?php echo esc_attr(get_theme_mod('gsm_hotline', GSM_HOTLINE)); ?>" class="btn btn-glass" style="color: var(--color-white);">
+                            <a href="tel:<?php echo esc_attr(get_theme_mod('gsm_hotline', GSM_HOTLINE)); ?>" class="btn btn-outline">
                                 <i class="fas fa-phone-alt"></i>
                                 <?php
                                 if ($lang === 'en') echo 'Phone';
@@ -209,13 +212,13 @@ $warranty = get_post_meta(get_the_ID(), '_gsm_warranty', true);
                                 else echo 'Điện thoại';
                                 ?>
                             </a>
-                            <a href="https://wa.me/<?php echo str_replace('+', '', get_theme_mod('gsm_whatsapp', GSM_HOTLINE)); ?>" target="_blank" class="btn btn-glass" style="color: var(--color-white);">
+                            <a href="https://wa.me/<?php echo str_replace('+', '', get_theme_mod('gsm_whatsapp', GSM_HOTLINE)); ?>" target="_blank" class="btn btn-outline">
                                 <i class="fab fa-whatsapp"></i> WhatsApp
                             </a>
-                            <a href="https://zalo.me/<?php echo str_replace('+', '', get_theme_mod('gsm_zalo', GSM_HOTLINE)); ?>" target="_blank" class="btn btn-glass" style="color: var(--color-white);">
+                            <a href="https://zalo.me/<?php echo str_replace('+', '', get_theme_mod('gsm_zalo', GSM_HOTLINE)); ?>" target="_blank" class="btn btn-outline">
                                 <strong>Z</strong> Zalo
                             </a>
-                            <a href="https://t.me/<?php echo ltrim(get_theme_mod('gsm_telegram', GSM_TELEGRAM), '@'); ?>" target="_blank" class="btn btn-glass" style="color: var(--color-white);">
+                            <a href="https://t.me/<?php echo ltrim(get_theme_mod('gsm_telegram', GSM_TELEGRAM), '@'); ?>" target="_blank" class="btn btn-outline">
                                 <i class="fab fa-telegram-plane"></i> Telegram
                             </a>
                         </div>
@@ -224,29 +227,29 @@ $warranty = get_post_meta(get_the_ID(), '_gsm_warranty', true);
             </div>
 
             <!-- Product Description Tabs -->
-            <div class="card" style="margin-top: var(--spacing-xl); padding: var(--spacing-lg);">
-                <h2 style="margin-bottom: var(--spacing-md); padding-bottom: var(--spacing-md); border-bottom: 3px solid var(--color-primary);">
+            <div class="card" style="margin-top: var(--sp-12); padding: var(--sp-8);">
+                <h2 style="margin-bottom: var(--sp-6); padding-bottom: var(--sp-6); border-bottom: 3px solid var(--primary);">
                     <?php
                     if ($lang === 'en') echo 'Product Description';
                     elseif ($lang === 'zh') echo '产品描述';
                     else echo 'Mô Tả Sản Phẩm';
                     ?>
                 </h2>
-                <div style="color: var(--color-gray-dark); line-height: 1.8; font-size: 17px;">
+                <div style="color: var(--text); line-height: 1.8; font-size: 17px;">
                     <?php the_content(); ?>
                 </div>
             </div>
 
             <!-- Comments Section - Modern Design -->
             <?php if (comments_open() || get_comments_number()) : ?>
-                <div style="margin-top: var(--spacing-xl);">
+                <div style="margin-top: var(--sp-12);">
                     <?php comments_template(); ?>
                 </div>
             <?php endif; ?>
 
             <!-- Related Products -->
-            <div style="margin-top: var(--spacing-xl); padding-top: var(--spacing-xl); border-top: 2px solid var(--border-color);">
-                <h3 class="section-title" style="font-size: 32px; margin-bottom: var(--spacing-lg);">
+            <div style="margin-top: var(--sp-12); padding-top: var(--sp-12); border-top: 2px solid var(--border);">
+                <h3 class="section-title" style="font-size: 32px; margin-bottom: var(--sp-8);">
                     <?php
                     if ($lang === 'en') echo 'Related Products';
                     elseif ($lang === 'zh') echo '相关产品';
@@ -311,7 +314,7 @@ $warranty = get_post_meta(get_the_ID(), '_gsm_warranty', true);
                             endwhile;
                             wp_reset_postdata();
                         else :
-                            echo '<p style="color: var(--color-gray-light); grid-column: 1 / -1; text-align: center;">';
+                            echo '<p style="color: var(--text-light); grid-column: 1 / -1; text-align: center;">';
                             if ($lang === 'en') echo 'No related products.';
                             elseif ($lang === 'zh') echo '没有相关产品。';
                             else echo 'Không có sản phẩm liên quan.';

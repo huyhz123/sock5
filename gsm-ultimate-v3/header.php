@@ -84,6 +84,13 @@
                 ?>
             </nav>
 
+            <?php
+            // WooCommerce cart icon
+            if (function_exists('gsm_woocommerce_cart_link')) {
+                gsm_woocommerce_cart_link();
+            }
+            ?>
+
             <button class="mobile-menu-toggle" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
             </button>
@@ -99,10 +106,10 @@ function gsm_default_menu() {
     ?>
     <ul class="nav-menu">
         <li><a href="<?php echo esc_url(home_url('/')); ?>" class="active"><?php echo gsm_t('home'); ?></a></li>
-        <li><a href="<?php echo esc_url(home_url('/services/')); ?>"><?php echo gsm_t('services'); ?></a></li>
-        <li><a href="<?php echo esc_url(home_url('/accounts/')); ?>"><?php echo gsm_t('accounts'); ?></a></li>
-        <li><a href="<?php echo esc_url(home_url('/phones/')); ?>"><?php echo gsm_t('phones'); ?></a></li>
-        <li><a href="<?php echo esc_url(home_url('/parts/')); ?>"><?php echo gsm_t('parts'); ?></a></li>
+        <li><a href="<?php echo esc_url(get_post_type_archive_link('gsm_service')); ?>"><?php echo gsm_t('services'); ?></a></li>
+        <li><a href="<?php echo esc_url(get_post_type_archive_link('gsm_account')); ?>"><?php echo gsm_t('accounts'); ?></a></li>
+        <li><a href="<?php echo esc_url(get_post_type_archive_link('gsm_phone')); ?>"><?php echo gsm_t('phones'); ?></a></li>
+        <li><a href="<?php echo esc_url(get_post_type_archive_link('gsm_part')); ?>"><?php echo gsm_t('parts'); ?></a></li>
         <li><a href="<?php echo esc_url(home_url('/blog/')); ?>"><?php echo gsm_t('blog'); ?></a></li>
         <li><a href="<?php echo esc_url(home_url('/contact/')); ?>"><?php echo gsm_t('contact'); ?></a></li>
     </ul>

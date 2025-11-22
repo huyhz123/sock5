@@ -1,0 +1,130 @@
+/*
+Theme Name: GSM Services - Clean Version
+Theme URI: https://hzgsm.com
+Author: HzGSM
+Author URI: https://t.me/hzgsm
+Description: Clean WordPress Theme with WooCommerce Support - Zero Errors
+Version: 1.0.0
+License: GNU General Public License v2 or later
+Text Domain: gsm-clean
+Tags: woocommerce, clean, minimal
+
+Contact: +84386355255 | @hzgsm
+*/
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+}
+
+/* Container */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+.site-header {
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  padding: 20px 0;
+}
+
+.site-logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #DC2626;
+  text-decoration: none;
+}
+
+/* Main Content */
+.site-content {
+  padding: 40px 0;
+  min-height: 400px;
+}
+
+/* Footer */
+.site-footer {
+  background: #1F2937;
+  color: #9CA3AF;
+  padding: 40px 0 20px;
+  text-align: center;
+}
+
+/* WooCommerce Basic Support */
+.woocommerce ul.products {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+  list-style: none;
+}
+
+.woocommerce ul.products li.product {
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #eee;
+  border-radius: 8px;
+}
+
+.woocommerce ul.products li.product img {
+  max-width: 100%;
+  height: auto;
+}
+
+.woocommerce ul.products li.product .button {
+  display: inline-block;
+  padding: 10px 20px;
+  background: #DC2626;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.woocommerce ul.products li.product .button:hover {
+  background: #B91C1C;
+}
+
+/* WooCommerce Related Products Grid - 3/2/1 Columns */
+.woocommerce .related.products ul.products,
+.woocommerce-page .related.products ul.products {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 30px !important;
+  list-style: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  width: 100% !important;
+}
+
+.woocommerce .related.products ul.products li.product {
+  float: none !important;
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+/* Tablet - 2 columns */
+@media (max-width: 1023px) {
+  .woocommerce .related.products ul.products,
+  .woocommerce-page .related.products ul.products {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* Mobile - 1 column */
+@media (max-width: 767px) {
+  .woocommerce .related.products ul.products,
+  .woocommerce-page .related.products ul.products {
+    grid-template-columns: 1fr !important;
+  }
+}

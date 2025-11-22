@@ -1,0 +1,208 @@
+/**
+ * GSM ULTIMATE v3.5 - WooCommerce Layout Fix Patch
+ *
+ * VẤNĐỀ ĐÃ FIX:
+ * 1. Related products hiển thị quá hẹp (fixed: grid 3 cột desktop, 2 tablet, 1 mobile)
+ * 2. Header alignment không đều (fixed: max-width, padding, flex alignment)
+ * 3. Product images bị crop (fixed: object-fit: cover)
+ * 4. Buttons không căn chỉnh (fixed: width 100%, margin-top)
+ *
+ * CÁCH SỬ DỤNG:
+ * - Option 1: Copy toàn bộ file này vào style.css (thay thế các sections tương ứng)
+ * - Option 2: Dán vào Customizer > Additional CSS
+ * - Option 3: Tạo file custom.css và enqueue trong functions.php
+ */
+
+/* ===== HEADER FIX ===== */
+/* Fix header container max-width và alignment */
+.header-main {
+    padding: var(--sp-4) 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.header-main .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--sp-4);
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--sp-4);
+}
+
+.site-logo {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    color: var(--black);
+    background: linear-gradient(135deg, var(--red-600), var(--red-700));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    flex-shrink: 0; /* Prevent logo from shrinking */
+}
+
+.main-navigation {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    min-width: 0; /* Allow flex shrinking */
+}
+
+.nav-menu {
+    display: flex;
+    align-items: center;
+    gap: var(--sp-2);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-menu li {
+    margin: 0;
+}
+
+.nav-menu li a {
+    padding: var(--sp-2) var(--sp-4);
+    font-size: var(--text-base);
+    font-weight: 500;
+    color: var(--text);
+    border-radius: var(--r-md);
+    transition: all var(--trans-base);
+    display: block;
+}
+
+.nav-menu li a:hover,
+.nav-menu li a.active {
+    color: var(--primary);
+    background: var(--bg-secondary);
+}
+
+/* ===== WOOCOMMERCE PRODUCTS GRID FIX ===== */
+/* Fix product grid layout - Shop & Archive pages */
+.woocommerce ul.products {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--sp-8);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.woocommerce ul.products li.product {
+    position: relative;
+    background: var(--white);
+    border-radius: var(--r-xl);
+    border: 1px solid var(--border);
+    overflow: hidden;
+    transition: all var(--trans-base);
+}
+
+.woocommerce ul.products li.product:hover {
+    border-color: var(--primary);
+    box-shadow: var(--shadow-xl);
+    transform: translateY(-4px);
+}
+
+/* Fix product images - prevent crop */
+.woocommerce ul.products li.product img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover; /* Prevent image distortion */
+}
+
+.woocommerce ul.products li.product .woocommerce-loop-product__title {
+    font-size: var(--text-lg);
+    font-weight: 700;
+    margin: var(--sp-4) 0;
+    color: var(--black);
+}
+
+.woocommerce ul.products li.product .price {
+    color: var(--primary);
+    font-size: var(--text-xl);
+    font-weight: 800;
+}
+
+/* Fix button alignment - full width, proper spacing */
+.woocommerce ul.products li.product .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--sp-3) var(--sp-6);
+    background: var(--primary);
+    color: var(--white);
+    border-radius: var(--r-lg);
+    font-weight: 600;
+    transition: all var(--trans-base);
+    border: none;
+    width: 100%; /* Full width button */
+    margin-top: var(--sp-3); /* Spacing from content above */
+}
+
+.woocommerce ul.products li.product .button:hover {
+    background: var(--primary-hover);
+    transform: translateY(-1px);
+}
+
+/* Tablet - 2 columns */
+@media (max-width: 1023px) {
+    .woocommerce ul.products {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--sp-6);
+    }
+}
+
+/* Mobile - 1 column */
+@media (max-width: 767px) {
+    .woocommerce ul.products {
+        grid-template-columns: 1fr;
+        gap: var(--sp-6);
+    }
+}
+
+/* ===== RELATED PRODUCTS FIX ===== */
+/* Critical fix for related products section */
+.woocommerce .related.products {
+    margin-top: var(--sp-16);
+    padding-top: var(--sp-16);
+    border-top: 2px solid var(--border);
+}
+
+.woocommerce .related.products > h2 {
+    font-size: var(--text-3xl);
+    font-weight: 800;
+    margin-bottom: var(--sp-8);
+    color: var(--black);
+}
+
+/* Force grid layout for related products - Override WooCommerce defaults */
+.woocommerce .related.products ul.products {
+    display: grid !important; /* !important to override WooCommerce inline styles */
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: var(--sp-8) !important;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.woocommerce .related.products ul.products li.product {
+    box-sizing: border-box;
+    min-width: 0; /* Allow flex/grid shrinking */
+}
+
+/* Related products responsive - Tablet */
+@media (max-width: 1023px) {
+    .woocommerce .related.products ul.products {
+        grid-template-columns: repeat(2, 1fr) !important;
+        gap: var(--sp-6) !important;
+    }
+}
+
+/* Related products responsive - Mobile */
+@media (max-width: 767px) {
+    .woocommerce .related.products ul.products {
+        grid-template-columns: 1fr !important;
+        gap: var(--sp-6) !important;
+    }
+}
