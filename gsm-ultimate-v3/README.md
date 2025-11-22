@@ -295,6 +295,17 @@ http://www.gnu.org/licenses/gpl-2.0.html
 
 ## 🔄 Changelog
 
+### Version 3.1.0 (2025) - BRIGHT EDITION
+- ✅ **NEW:** Bright modern UI theme (no more dark!)
+- ✅ **NEW:** Auto cache clear system (supports all major plugins)
+- ✅ **NEW:** Optimized language system with caching
+- ✅ **NEW:** Clear Cache button in admin bar
+- ✅ **NEW:** Daily auto cache clear scheduled
+- ✅ Updated color scheme to bright/light theme
+- ✅ Improved glassmorphism with lighter tones
+- ✅ Enhanced performance with translation caching
+- ✅ Better language cookie handling
+
 ### Version 3.0.0 (2025)
 - ✅ Fixed multi-language switching (WordPress i18n)
 - ✅ Redesigned product information page (modern cards)

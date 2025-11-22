@@ -1,14 +1,14 @@
 /*
-Theme Name: GSM Ultimate v3.0
+Theme Name: GSM Ultimate v3.1
 Theme URI: https://hzgsm.com
 Author: HzGSM
 Author URI: https://t.me/hzgsm
-Description: Ultimate GSM Services Theme - Multi-language, Multi-currency, IMEI API Integration, 2025 Modern UI
-Version: 3.0.0
+Description: Ultimate GSM Services Theme - Bright Modern UI, Multi-language, Multi-currency, Auto Cache Clear, IMEI API Integration
+Version: 3.1.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: gsm-ultimate
-Tags: gsm, services, business, e-commerce, multi-language, modern
+Tags: gsm, services, business, e-commerce, multi-language, modern, bright
 
 Contact: +84386355255 | @hzgsm
 */
@@ -33,17 +33,17 @@ Contact: +84386355255 | @hzgsm
    1. CSS Variables & Design System
    =================================== */
 :root {
-    /* Colors - Black Gray Light Theme */
-    --color-black: #0a0a0a;
-    --color-gray-darker: #1a1a1a;
-    --color-gray-dark: #2d2d2d;
-    --color-gray: #4a4a4a;
-    --color-gray-light: #8a8a8a;
-    --color-gray-lighter: #d4d4d4;
+    /* Colors - Bright Modern Theme */
+    --color-black: #1a1a2e;
+    --color-gray-darker: #2d2d44;
+    --color-gray-dark: #4a4a5e;
+    --color-gray: #6b6b7e;
+    --color-gray-light: #9999aa;
+    --color-gray-lighter: #e5e5f0;
     --color-white: #ffffff;
-    --color-background: #f5f5f5;
+    --color-background: #f8f9fa;
 
-    /* Primary Colors */
+    /* Primary Colors - Vibrant */
     --color-primary: #ff9800;
     --color-primary-dark: #f57c00;
     --color-primary-light: #ffb74d;
@@ -51,24 +51,25 @@ Contact: +84386355255 | @hzgsm
     /* Accent & Status Colors */
     --color-accent: #00bcd4;
     --color-success: #4caf50;
-    --color-warning: #ff9800;
-    --color-danger: #f44336;
-    --color-info: #2196f3;
+    --color-warning: #ffa726;
+    --color-danger: #ef5350;
+    --color-info: #42a5f5;
 
-    /* Gradients - 2025 Style */
-    --gradient-primary: linear-gradient(135deg, #ff9800 0%, #f57c00 100%);
-    --gradient-dark: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+    /* Gradients - Bright 2025 Style */
+    --gradient-primary: linear-gradient(135deg, #ff9800 0%, #ffb74d 100%);
+    --gradient-dark: linear-gradient(135deg, #2d2d44 0%, #4a4a5e 100%);
+    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+    --gradient-bright: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
 
-    /* Glassmorphism */
-    --glass-bg: rgba(255, 255, 255, 0.1);
-    --glass-border: rgba(255, 255, 255, 0.2);
-    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
-    --glass-blur: blur(10px);
+    /* Glassmorphism - Lighter */
+    --glass-bg: rgba(255, 255, 255, 0.85);
+    --glass-border: rgba(255, 152, 0, 0.2);
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
+    --glass-blur: blur(12px);
 
-    /* Neumorphism */
-    --neu-shadow-light: 8px 8px 16px rgba(0, 0, 0, 0.1);
-    --neu-shadow-dark: -8px -8px 16px rgba(255, 255, 255, 0.05);
+    /* Neumorphism - Softer */
+    --neu-shadow-light: 12px 12px 24px rgba(0, 0, 0, 0.06);
+    --neu-shadow-dark: -12px -12px 24px rgba(255, 255, 255, 0.9);
     --neu-shadow: var(--neu-shadow-light), var(--neu-shadow-dark);
 
     /* Spacing */
@@ -94,7 +95,7 @@ Contact: +84386355255 | @hzgsm
     --border-radius-sm: 8px;
     --border-radius-md: 12px;
     --border-radius-lg: 20px;
-    --border-color: #e0e0e0;
+    --border-color: #e5e5f0;
 
     /* Transitions */
     --transition-fast: all 0.2s ease;

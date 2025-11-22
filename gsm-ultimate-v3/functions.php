@@ -1,19 +1,21 @@
 <?php
 /**
- * GSM Ultimate v3.0 - Functions
+ * GSM Ultimate v3.1 - Functions
  *
  * Features:
+ * - Bright Modern UI (2025 Design)
  * - WordPress i18n Multi-language (EN, VI, ZH)
  * - Multi-currency (USD, VND, CNY)
  * - 4 Product Types (Services, Accounts, Phones, Parts)
  * - IMEI API Integration (GSMTOOL, DHRU)
- * - Modern 2025 UI/UX
+ * - Auto Cache Clear System
+ * - Optimized Language System
  *
  * Contact: +84386355255 | @hzgsm
  */
 
 // Theme Constants
-define('GSM_VERSION', '3.0.0');
+define('GSM_VERSION', '3.1.0');
 define('GSM_HOTLINE', '+84386355255');
 define('GSM_TELEGRAM', '@hzgsm');
 define('GSM_THEME_DIR', get_template_directory());
@@ -854,3 +856,262 @@ function gsm_handle_contact_form() {
 }
 add_action('admin_post_gsm_contact_form', 'gsm_handle_contact_form');
 add_action('admin_post_nopriv_gsm_contact_form', 'gsm_handle_contact_form');
+
+/**
+ * ============================================
+ * AUTO CACHE CLEAR SYSTEM
+ * ============================================
+ */
+
+/**
+ * Clear all WordPress caches
+ */
+function gsm_clear_all_caches() {
+    // Clear WordPress object cache
+    wp_cache_flush();
+
+    // Clear transients
+    global $wpdb;
+    $wpdb->query("DELETE FROM {$wpdb->options} WHERE option_name LIKE '_transient_%'");
+    $wpdb->query("DELETE FROM {$wpdb->options} WHERE option_name LIKE '_site_transient_%'");
+
+    // Clear rewrite rules
+    flush_rewrite_rules();
+
+    // Clear WP Super Cache if exists
+    if (function_exists('wp_cache_clear_cache')) {
+        wp_cache_clear_cache();
+    }
+
+    // Clear W3 Total Cache if exists
+    if (function_exists('w3tc_flush_all')) {
+        w3tc_flush_all();
+    }
+
+    // Clear WP Rocket cache if exists
+    if (function_exists('rocket_clean_domain')) {
+        rocket_clean_domain();
+    }
+
+    // Clear LiteSpeed Cache if exists
+    if (class_exists('LiteSpeed_Cache_API')) {
+        LiteSpeed_Cache_API::purge_all();
+    }
+
+    // Log cache clear
+    error_log('GSM Ultimate: All caches cleared at ' . current_time('mysql'));
+}
+
+/**
+ * Auto clear cache on theme activation
+ */
+function gsm_clear_cache_on_activation() {
+    gsm_clear_all_caches();
+
+    // Set option to track cache clear
+    update_option('gsm_last_cache_clear', current_time('mysql'));
+
+    // Show admin notice
+    add_option('gsm_cache_cleared_notice', true);
+}
+add_action('after_switch_theme', 'gsm_clear_cache_on_activation');
+
+/**
+ * Auto clear cache when saving customizer
+ */
+function gsm_clear_cache_on_customizer_save($wp_customize) {
+    gsm_clear_all_caches();
+    update_option('gsm_last_cache_clear', current_time('mysql'));
+}
+add_action('customize_save_after', 'gsm_clear_cache_on_customizer_save');
+
+/**
+ * Auto clear cache when publishing/updating posts
+ */
+function gsm_clear_cache_on_post_save($post_id) {
+    // Don't clear cache on autosave
+    if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
+        return;
+    }
+
+    // Don't clear cache for revisions
+    if (wp_is_post_revision($post_id)) {
+        return;
+    }
+
+    // Clear cache
+    gsm_clear_all_caches();
+    update_option('gsm_last_cache_clear', current_time('mysql'));
+}
+add_action('save_post', 'gsm_clear_cache_on_post_save');
+add_action('edit_post', 'gsm_clear_cache_on_post_save');
+
+/**
+ * Auto clear cache when updating options
+ */
+function gsm_clear_cache_on_option_update($option) {
+    // Only clear for theme-related options
+    if (strpos($option, 'gsm_') === 0 || strpos($option, 'theme_mods_') === 0) {
+        gsm_clear_all_caches();
+        update_option('gsm_last_cache_clear', current_time('mysql'));
+    }
+}
+add_action('updated_option', 'gsm_clear_cache_on_option_update');
+
+/**
+ * Scheduled auto cache clear (daily)
+ */
+function gsm_schedule_auto_cache_clear() {
+    if (!wp_next_scheduled('gsm_daily_cache_clear')) {
+        wp_schedule_event(time(), 'daily', 'gsm_daily_cache_clear');
+    }
+}
+add_action('wp', 'gsm_schedule_auto_cache_clear');
+
+function gsm_daily_cache_clear_callback() {
+    gsm_clear_all_caches();
+    update_option('gsm_last_cache_clear', current_time('mysql'));
+}
+add_action('gsm_daily_cache_clear', 'gsm_daily_cache_clear_callback');
+
+/**
+ * Admin notice for cache clear
+ */
+function gsm_cache_cleared_admin_notice() {
+    if (get_option('gsm_cache_cleared_notice')) {
+        ?>
+        <div class="notice notice-success is-dismissible">
+            <p><strong><?php _e('GSM Ultimate:', 'gsm-ultimate'); ?></strong> <?php _e('All caches have been cleared successfully!', 'gsm-ultimate'); ?></p>
+        </div>
+        <?php
+        delete_option('gsm_cache_cleared_notice');
+    }
+}
+add_action('admin_notices', 'gsm_cache_cleared_admin_notice');
+
+/**
+ * Add clear cache button to admin bar
+ */
+function gsm_admin_bar_cache_clear($wp_admin_bar) {
+    if (!current_user_can('manage_options')) {
+        return;
+    }
+
+    $args = array(
+        'id' => 'gsm-clear-cache',
+        'title' => '<span class="ab-icon dashicons dashicons-update"></span> ' . __('Clear Cache', 'gsm-ultimate'),
+        'href' => wp_nonce_url(admin_url('admin-post.php?action=gsm_clear_cache'), 'gsm_clear_cache'),
+        'meta' => array(
+            'class' => 'gsm-clear-cache-btn'
+        )
+    );
+    $wp_admin_bar->add_node($args);
+}
+add_action('admin_bar_menu', 'gsm_admin_bar_cache_clear', 100);
+
+/**
+ * Handle manual cache clear from admin bar
+ */
+function gsm_handle_manual_cache_clear() {
+    check_admin_referer('gsm_clear_cache');
+
+    if (!current_user_can('manage_options')) {
+        wp_die(__('You do not have permission to perform this action.', 'gsm-ultimate'));
+    }
+
+    gsm_clear_all_caches();
+
+    wp_redirect(add_query_arg('cache_cleared', '1', wp_get_referer()));
+    exit;
+}
+add_action('admin_post_gsm_clear_cache', 'gsm_handle_manual_cache_clear');
+
+/**
+ * ============================================
+ * OPTIMIZED LANGUAGE SYSTEM
+ * ============================================
+ */
+
+/**
+ * Load text domain with priority
+ */
+function gsm_load_textdomain_improved() {
+    $locale = determine_locale();
+    $mofile = GSM_THEME_DIR . "/languages/gsm-ultimate-{$locale}.mo";
+
+    // Try to load .mo file
+    if (file_exists($mofile)) {
+        load_textdomain('gsm-ultimate', $mofile);
+    }
+
+    // Fallback to default WordPress i18n
+    load_theme_textdomain('gsm-ultimate', GSM_THEME_DIR . '/languages');
+}
+add_action('after_setup_theme', 'gsm_load_textdomain_improved', 1);
+
+/**
+ * Cache translations for performance
+ */
+function gsm_cache_translations() {
+    $locale = get_locale();
+    $cache_key = 'gsm_translations_' . $locale;
+
+    $translations = wp_cache_get($cache_key);
+
+    if (false === $translations) {
+        // Translations will be loaded by WordPress
+        // Cache for 24 hours
+        wp_cache_set($cache_key, true, '', DAY_IN_SECONDS);
+    }
+}
+add_action('init', 'gsm_cache_translations');
+
+/**
+ * Improved translation function with caching
+ */
+function gsm_t_cached($key) {
+    static $translation_cache = array();
+
+    $lang = gsm_get_current_language();
+    $cache_key = $key . '_' . $lang;
+
+    if (isset($translation_cache[$cache_key])) {
+        return $translation_cache[$cache_key];
+    }
+
+    $translation = gsm_t($key);
+    $translation_cache[$cache_key] = $translation;
+
+    return $translation;
+}
+
+/**
+ * Preload common translations
+ */
+function gsm_preload_translations() {
+    $common_keys = array(
+        'home', 'services', 'accounts', 'phones', 'parts', 'blog', 'contact',
+        'price', 'buy_now', 'add_to_cart', 'read_more', 'in_stock', 'out_of_stock'
+    );
+
+    foreach ($common_keys as $key) {
+        gsm_t_cached($key);
+    }
+}
+add_action('wp', 'gsm_preload_translations');
+
+/**
+ * Optimize language cookie handling
+ */
+function gsm_optimize_language_cookie() {
+    if (isset($_COOKIE['gsm_language'])) {
+        $lang = sanitize_text_field($_COOKIE['gsm_language']);
+
+        // Validate language
+        if (!in_array($lang, array('en', 'vi', 'zh'))) {
+            // Reset to default if invalid
+            setcookie('gsm_language', 'vi', time() + YEAR_IN_SECONDS, COOKIEPATH, COOKIE_DOMAIN, is_ssl(), true);
+        }
+    }
+}
+add_action('init', 'gsm_optimize_language_cookie', 1);
