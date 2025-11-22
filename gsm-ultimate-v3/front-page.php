@@ -325,7 +325,7 @@ $lang = gsm_get_current_language();
 </section>
 
 <!-- Features Section -->
-<section class="products-section" style="background: var(--color-white);">
+<section class="products-section" style="background:var(--bg);">
     <div class="container">
         <div class="section-header">
             <h2 class="section-title">
@@ -338,16 +338,16 @@ $lang = gsm_get_current_language();
         </div>
 
         <div class="grid grid-4">
-            <div class="card card-neu" style="padding: var(--spacing-lg); text-align: center;">
-                <div style="font-size: 48px; margin-bottom: var(--spacing-sm);">⚡</div>
-                <h3 style="margin-bottom: var(--spacing-sm);">
+            <div class="card card-neu" style="padding:var(--sp-8);text-align:center;">
+                <div style="font-size:64px;margin-bottom:var(--sp-4);">⚡</div>
+                <h3 style="font-size:var(--text-2xl);font-weight:700;margin-bottom:var(--sp-3);color:var(--black);">
                     <?php
                     if ($lang === 'en') echo 'Fast Service';
                     elseif ($lang === 'zh') echo '快速服务';
                     else echo 'Dịch vụ nhanh';
                     ?>
                 </h3>
-                <p style="color: var(--color-gray);">
+                <p style="color:var(--text-light);font-size:var(--text-base);line-height:1.6;">
                     <?php
                     if ($lang === 'en') echo 'Quick turnaround time for all services';
                     elseif ($lang === 'zh') echo '所有服务快速周转';
@@ -356,16 +356,16 @@ $lang = gsm_get_current_language();
                 </p>
             </div>
 
-            <div class="card card-neu" style="padding: var(--spacing-lg); text-align: center;">
-                <div style="font-size: 48px; margin-bottom: var(--spacing-sm);">🔒</div>
-                <h3 style="margin-bottom: var(--spacing-sm);">
+            <div class="card card-neu" style="padding:var(--sp-8);text-align:center;">
+                <div style="font-size:64px;margin-bottom:var(--sp-4);">🔒</div>
+                <h3 style="font-size:var(--text-2xl);font-weight:700;margin-bottom:var(--sp-3);color:var(--black);">
                     <?php
                     if ($lang === 'en') echo 'Secure & Safe';
                     elseif ($lang === 'zh') echo '安全可靠';
                     else echo 'An toàn bảo mật';
                     ?>
                 </h3>
-                <p style="color: var(--color-gray);">
+                <p style="color:var(--text-light);font-size:var(--text-base);line-height:1.6;">
                     <?php
                     if ($lang === 'en') echo 'Your data is always protected';
                     elseif ($lang === 'zh') echo '您的数据始终受到保护';
@@ -374,16 +374,16 @@ $lang = gsm_get_current_language();
                 </p>
             </div>
 
-            <div class="card card-neu" style="padding: var(--spacing-lg); text-align: center;">
-                <div style="font-size: 48px; margin-bottom: var(--spacing-sm);">💰</div>
-                <h3 style="margin-bottom: var(--spacing-sm);">
+            <div class="card card-neu" style="padding:var(--sp-8);text-align:center;">
+                <div style="font-size:64px;margin-bottom:var(--sp-4);">💰</div>
+                <h3 style="font-size:var(--text-2xl);font-weight:700;margin-bottom:var(--sp-3);color:var(--black);">
                     <?php
                     if ($lang === 'en') echo 'Best Prices';
                     elseif ($lang === 'zh') echo '最优价格';
                     else echo 'Giá tốt nhất';
                     ?>
                 </h3>
-                <p style="color: var(--color-gray);">
+                <p style="color:var(--text-light);font-size:var(--text-base);line-height:1.6;">
                     <?php
                     if ($lang === 'en') echo 'Competitive pricing guaranteed';
                     elseif ($lang === 'zh') echo '保证有竞争力的价格';
@@ -392,10 +392,10 @@ $lang = gsm_get_current_language();
                 </p>
             </div>
 
-            <div class="card card-neu" style="padding: var(--spacing-lg); text-align: center;">
-                <div style="font-size: 48px; margin-bottom: var(--spacing-sm);">🌟</div>
-                <h3 style="margin-bottom: var(--spacing-sm);">24/7</h3>
-                <p style="color: var(--color-gray);">
+            <div class="card card-neu" style="padding:var(--sp-8);text-align:center;">
+                <div style="font-size:64px;margin-bottom:var(--sp-4);">🌟</div>
+                <h3 style="font-size:var(--text-2xl);font-weight:700;margin-bottom:var(--sp-3);color:var(--black);">24/7</h3>
+                <p style="color:var(--text-light);font-size:var(--text-base);line-height:1.6;">
                     <?php
                     if ($lang === 'en') echo 'Round the clock support';
                     elseif ($lang === 'zh') echo '全天候支持';
