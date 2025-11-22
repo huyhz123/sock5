@@ -105,49 +105,6 @@ function gsm_ultimate_enqueue_scripts() {
 add_action('wp_enqueue_scripts', 'gsm_ultimate_enqueue_scripts');
 
 /**
- * SEO Meta Tags - DISABLED TEMPORARILY FOR DEBUGGING
- */
-/*
-function gsm_seo_meta_tags() {
-    // Get current URL
-    $current_url = is_singular() ? get_permalink() : home_url(add_query_arg(null, null));
-
-    if (is_singular()) {
-        global $post;
-        if (isset($post) && $post) {
-            $description = has_excerpt() ? get_the_excerpt() : wp_trim_words(strip_tags($post->post_content), 30);
-            $image = has_post_thumbnail() ? get_the_post_thumbnail_url($post->ID, 'large') : GSM_THEME_URI . '/assets/images/default-og.jpg';
-            $title = get_the_title();
-        } else {
-            $description = get_bloginfo('description');
-            $image = GSM_THEME_URI . '/assets/images/default-og.jpg';
-            $title = get_bloginfo('name');
-        }
-    } else {
-        $description = get_bloginfo('description');
-        $image = GSM_THEME_URI . '/assets/images/default-og.jpg';
-        $title = get_bloginfo('name');
-    }
-
-    echo '<meta name="description" content="' . esc_attr($description) . '">' . "\n";
-    echo '<meta property="og:title" content="' . esc_attr($title) . '">' . "\n";
-    echo '<meta property="og:description" content="' . esc_attr($description) . '">' . "\n";
-    echo '<meta property="og:image" content="' . esc_url($image) . '">' . "\n";
-    echo '<meta property="og:url" content="' . esc_url($current_url) . '">' . "\n";
-    echo '<meta property="og:type" content="website">' . "\n";
-    echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
-    echo '<meta name="twitter:title" content="' . esc_attr($title) . '">' . "\n";
-    echo '<meta name="twitter:description" content="' . esc_attr($description) . '">' . "\n";
-    echo '<meta name="twitter:image" content="' . esc_url($image) . '">' . "\n";
-
-    if (is_singular()) {
-        echo '<link rel="canonical" href="' . esc_url($current_url) . '">' . "\n";
-    }
-}
-add_action('wp_head', 'gsm_seo_meta_tags', 1);
-*/
-
-/**
  * ============================================
  * MULTI-LANGUAGE SYSTEM - WordPress i18n
  * ============================================
@@ -1081,7 +1038,7 @@ remove_action('woocommerce_after_main_content', 'woocommerce_output_content_wrap
  * Add custom WooCommerce wrappers
  */
 function gsm_woocommerce_wrapper_start() {
-    echo '<div class="container"><main class="woocommerce-content" style="padding:var(--sp-16) 0;">';
+    echo '<div class="container"><main class="woocommerce-content" style="padding:var(--sp-20) 0;">';
 }
 add_action('woocommerce_before_main_content', 'gsm_woocommerce_wrapper_start', 10);
 
@@ -1138,52 +1095,6 @@ function gsm_woocommerce_header_add_to_cart_fragment($fragments) {
     return $fragments;
 }
 add_filter('woocommerce_add_to_cart_fragments', 'gsm_woocommerce_header_add_to_cart_fragment');
-
-/**
- * Add Product Schema Markup (JSON-LD) - DISABLED TEMPORARILY FOR DEBUGGING
- */
-/*
-function gsm_product_schema_markup() {
-    if (!is_product() || !class_exists('WooCommerce')) {
-        return;
-    }
-
-    global $product;
-    if (!$product) {
-        return;
-    }
-
-    $schema = array(
-        '@context' => 'https://schema.org/',
-        '@type' => 'Product',
-        'name' => $product->get_name(),
-        'description' => wp_strip_all_tags($product->get_short_description() ?: $product->get_description()),
-        'sku' => $product->get_sku(),
-        'brand' => array(
-            '@type' => 'Brand',
-            'name' => get_bloginfo('name')
-        ),
-        'offers' => array(
-            '@type' => 'Offer',
-            'url' => get_permalink($product->get_id()),
-            'priceCurrency' => get_woocommerce_currency(),
-            'price' => $product->get_price(),
-            'availability' => $product->is_in_stock() ? 'https://schema.org/InStock' : 'https://schema.org/OutOfStock',
-            'seller' => array(
-                '@type' => 'Organization',
-                'name' => get_bloginfo('name')
-            )
-        )
-    );
-
-    if (has_post_thumbnail($product->get_id())) {
-        $schema['image'] = get_the_post_thumbnail_url($product->get_id(), 'large');
-    }
-
-    echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>' . "\n";
-}
-add_action('wp_footer', 'gsm_product_schema_markup');
-*/
 
 /**
  * ============================================
