@@ -84,6 +84,13 @@
                 ?>
             </nav>
 
+            <?php
+            // WooCommerce cart icon
+            if (function_exists('gsm_woocommerce_cart_link')) {
+                gsm_woocommerce_cart_link();
+            }
+            ?>
+
             <button class="mobile-menu-toggle" aria-label="Toggle menu">
                 <i class="fas fa-bars"></i>
             </button>
