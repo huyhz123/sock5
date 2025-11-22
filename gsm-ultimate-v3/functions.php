@@ -108,11 +108,20 @@ add_action('wp_enqueue_scripts', 'gsm_ultimate_enqueue_scripts');
  * SEO Meta Tags
  */
 function gsm_seo_meta_tags() {
+    // Get current URL
+    $current_url = is_singular() ? get_permalink() : home_url(add_query_arg(null, null));
+
     if (is_singular()) {
         global $post;
-        $description = has_excerpt() ? get_the_excerpt() : wp_trim_words(strip_tags($post->post_content), 30);
-        $image = has_post_thumbnail() ? get_the_post_thumbnail_url($post->ID, 'large') : GSM_THEME_URI . '/assets/images/default-og.jpg';
-        $title = get_the_title();
+        if (isset($post) && $post) {
+            $description = has_excerpt() ? get_the_excerpt() : wp_trim_words(strip_tags($post->post_content), 30);
+            $image = has_post_thumbnail() ? get_the_post_thumbnail_url($post->ID, 'large') : GSM_THEME_URI . '/assets/images/default-og.jpg';
+            $title = get_the_title();
+        } else {
+            $description = get_bloginfo('description');
+            $image = GSM_THEME_URI . '/assets/images/default-og.jpg';
+            $title = get_bloginfo('name');
+        }
     } else {
         $description = get_bloginfo('description');
         $image = GSM_THEME_URI . '/assets/images/default-og.jpg';
@@ -123,13 +132,16 @@ function gsm_seo_meta_tags() {
     echo '<meta property="og:title" content="' . esc_attr($title) . '">' . "\n";
     echo '<meta property="og:description" content="' . esc_attr($description) . '">' . "\n";
     echo '<meta property="og:image" content="' . esc_url($image) . '">' . "\n";
-    echo '<meta property="og:url" content="' . esc_url(get_permalink()) . '">' . "\n";
+    echo '<meta property="og:url" content="' . esc_url($current_url) . '">' . "\n";
     echo '<meta property="og:type" content="website">' . "\n";
     echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
     echo '<meta name="twitter:title" content="' . esc_attr($title) . '">' . "\n";
     echo '<meta name="twitter:description" content="' . esc_attr($description) . '">' . "\n";
     echo '<meta name="twitter:image" content="' . esc_url($image) . '">' . "\n";
-    echo '<link rel="canonical" href="' . esc_url(get_permalink()) . '">' . "\n";
+
+    if (is_singular()) {
+        echo '<link rel="canonical" href="' . esc_url($current_url) . '">' . "\n";
+    }
 }
 add_action('wp_head', 'gsm_seo_meta_tags', 1);
 
