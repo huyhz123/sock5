@@ -1,6 +1,6 @@
 <?php
 /**
- * GSM Ultimate v3.2 - Functions
+ * GSM Ultimate v3.3 - Functions
  *
  * Features:
  * - ULTRA BRIGHT White Theme (Canh Dương)
@@ -16,7 +16,7 @@
  */
 
 // Theme Constants
-define('GSM_VERSION', '3.2.0');
+define('GSM_VERSION', '3.3.0');
 define('GSM_HOTLINE', '+84386355255');
 define('GSM_TELEGRAM', '@hzgsm');
 define('GSM_THEME_DIR', get_template_directory());
@@ -745,56 +745,137 @@ function gsm_create_sample_content() {
         return;
     }
 
-    // Sample Services
+    // Sample Services (15 items)
     $services = array(
-        array('title' => 'iPhone IMEI Check', 'price' => 2.99, 'type' => 'gsm_service'),
-        array('title' => 'Samsung Unlock', 'price' => 9.99, 'type' => 'gsm_service'),
-        array('title' => 'iCloud Removal', 'price' => 29.99, 'type' => 'gsm_service'),
+        array('title' => 'iPhone IMEI Check', 'price' => 2.99, 'desc' => 'Fast IMEI verification for all iPhone models. Get detailed information about your device instantly.'),
+        array('title' => 'Samsung Network Unlock', 'price' => 9.99, 'desc' => 'Unlock any Samsung device from all carriers. Permanent unlock guaranteed.'),
+        array('title' => 'iCloud Removal Service', 'price' => 29.99, 'desc' => 'Professional iCloud unlock service. Remove activation lock safely.'),
+        array('title' => 'Xiaomi Mi Account Unlock', 'price' => 12.99, 'desc' => 'Fast Mi Account removal for all Xiaomi phones.'),
+        array('title' => 'Huawei FRP Bypass', 'price' => 8.99, 'desc' => 'Bypass Google account on Huawei devices quickly.'),
+        array('title' => 'Oppo Unlock Code', 'price' => 7.99, 'desc' => 'Get unlock code for Oppo phones instantly.'),
+        array('title' => 'Vivo Network Unlock', 'price' => 8.99, 'desc' => 'Unlock Vivo phones from any network carrier.'),
+        array('title' => 'Nokia IMEI Service', 'price' => 5.99, 'desc' => 'Complete IMEI service for Nokia devices.'),
+        array('title' => 'LG Unlock Service', 'price' => 9.99, 'desc' => 'Professional LG phone unlock service.'),
+        array('title' => 'Motorola Unlock Code', 'price' => 6.99, 'desc' => 'Fast unlock code generation for Motorola.'),
+        array('title' => 'Sony Xperia Unlock', 'price' => 10.99, 'desc' => 'Unlock Sony Xperia from all networks.'),
+        array('title' => 'OnePlus FRP Remove', 'price' => 11.99, 'desc' => 'Remove FRP lock from OnePlus devices.'),
+        array('title' => 'Realme Unlock Service', 'price' => 7.99, 'desc' => 'Fast unlock service for Realme phones.'),
+        array('title' => 'Google Pixel Unlock', 'price' => 14.99, 'desc' => 'Professional unlock for Google Pixel.'),
+        array('title' => 'Asus ZenFone Unlock', 'price' => 8.99, 'desc' => 'Unlock Asus ZenFone from carriers.'),
     );
 
-    // Sample Accounts
+    // Sample Accounts (12 items)
     $accounts = array(
-        array('title' => 'Apple ID Premium', 'price' => 4.99, 'type' => 'gsm_account'),
-        array('title' => 'Samsung Account', 'price' => 3.99, 'type' => 'gsm_account'),
+        array('title' => 'Apple ID Premium', 'price' => 4.99, 'desc' => 'Fresh Apple ID with iCloud access. Full warranty.'),
+        array('title' => 'Samsung Account VIP', 'price' => 3.99, 'desc' => 'Premium Samsung account with all features.'),
+        array('title' => 'Google Account Full', 'price' => 2.99, 'desc' => 'Complete Google account with Drive storage.'),
+        array('title' => 'Mi Account Premium', 'price' => 3.49, 'desc' => 'Xiaomi Mi Account with cloud storage.'),
+        array('title' => 'Huawei ID Account', 'price' => 3.99, 'desc' => 'Huawei ID with AppGallery access.'),
+        array('title' => 'Netflix Premium 4K', 'price' => 12.99, 'desc' => 'Netflix Premium account - 4 screens.'),
+        array('title' => 'Spotify Family Plan', 'price' => 9.99, 'desc' => 'Spotify Premium Family - 6 accounts.'),
+        array('title' => 'YouTube Premium', 'price' => 8.99, 'desc' => 'YouTube Premium with no ads.'),
+        array('title' => 'Office 365 Lifetime', 'price' => 29.99, 'desc' => 'Microsoft Office 365 lifetime license.'),
+        array('title' => 'Adobe Creative Cloud', 'price' => 39.99, 'desc' => 'Full Adobe CC suite access.'),
+        array('title' => 'PlayStation Plus', 'price' => 19.99, 'desc' => 'PS Plus 12-month subscription.'),
+        array('title' => 'Xbox Game Pass', 'price' => 24.99, 'desc' => 'Xbox Game Pass Ultimate.'),
     );
 
-    // Sample Phones
+    // Sample Phones (10 items)
     $phones = array(
-        array('title' => 'iPhone 14 Pro Max', 'price' => 999.99, 'type' => 'gsm_phone'),
-        array('title' => 'Samsung S23 Ultra', 'price' => 899.99, 'type' => 'gsm_phone'),
+        array('title' => 'iPhone 15 Pro Max', 'price' => 1299.99, 'desc' => 'Latest iPhone 15 Pro Max - 256GB. Brand new sealed.'),
+        array('title' => 'iPhone 14 Pro', 'price' => 999.99, 'desc' => 'iPhone 14 Pro 128GB. Factory unlocked.'),
+        array('title' => 'Samsung S24 Ultra', 'price' => 1199.99, 'desc' => 'Samsung Galaxy S24 Ultra 512GB.'),
+        array('title' => 'Samsung S23 Plus', 'price' => 799.99, 'desc' => 'Galaxy S23+ 256GB. Like new condition.'),
+        array('title' => 'Xiaomi 14 Pro', 'price' => 699.99, 'desc' => 'Xiaomi 14 Pro - Flagship performance.'),
+        array('title' => 'Google Pixel 8 Pro', 'price' => 899.99, 'desc' => 'Google Pixel 8 Pro with AI features.'),
+        array('title' => 'OnePlus 12', 'price' => 749.99, 'desc' => 'OnePlus 12 - Fast charging champion.'),
+        array('title' => 'Oppo Find X7', 'price' => 599.99, 'desc' => 'Oppo Find X7 with Hasselblad camera.'),
+        array('title' => 'Vivo X100 Pro', 'price' => 649.99, 'desc' => 'Vivo X100 Pro - Photography flagship.'),
+        array('title' => 'Huawei P60 Pro', 'price' => 799.99, 'desc' => 'Huawei P60 Pro with incredible zoom.'),
     );
 
-    // Sample Parts
+    // Sample Parts (15 items)
     $parts = array(
-        array('title' => 'iPhone 13 LCD Screen', 'price' => 79.99, 'type' => 'gsm_part'),
-        array('title' => 'Samsung S22 Battery', 'price' => 29.99, 'type' => 'gsm_part'),
+        array('title' => 'iPhone 15 OLED Screen', 'price' => 149.99, 'desc' => 'Original quality OLED display for iPhone 15.'),
+        array('title' => 'iPhone 14 LCD Display', 'price' => 99.99, 'desc' => 'High quality LCD screen replacement.'),
+        array('title' => 'iPhone 13 Battery', 'price' => 39.99, 'desc' => 'Original capacity battery for iPhone 13.'),
+        array('title' => 'Samsung S24 Screen', 'price' => 129.99, 'desc' => 'AMOLED screen for Galaxy S24.'),
+        array('title' => 'Samsung S23 Battery', 'price' => 34.99, 'desc' => 'High capacity replacement battery.'),
+        array('title' => 'Xiaomi 13 Display', 'price' => 79.99, 'desc' => 'Original Xiaomi 13 display assembly.'),
+        array('title' => 'Google Pixel 8 Screen', 'price' => 119.99, 'desc' => 'Pixel 8 OLED screen replacement.'),
+        array('title' => 'OnePlus 11 Battery', 'price' => 29.99, 'desc' => 'OnePlus 11 original battery.'),
+        array('title' => 'Oppo Reno LCD', 'price' => 69.99, 'desc' => 'Oppo Reno series LCD screen.'),
+        array('title' => 'Vivo Charging Port', 'price' => 19.99, 'desc' => 'USB-C charging port flex cable.'),
+        array('title' => 'Huawei Back Glass', 'price' => 24.99, 'desc' => 'Rear glass panel replacement.'),
+        array('title' => 'iPhone Camera Module', 'price' => 79.99, 'desc' => 'Rear camera replacement module.'),
+        array('title' => 'Samsung Front Camera', 'price' => 39.99, 'desc' => 'Front camera flex cable.'),
+        array('title' => 'Phone Repair Tool Kit', 'price' => 29.99, 'desc' => 'Complete tool set for phone repair.'),
+        array('title' => 'Adhesive Tape Set', 'price' => 9.99, 'desc' => 'Pre-cut adhesive for screen repair.'),
     );
 
-    $all_samples = array_merge($services, $accounts, $phones, $parts);
+    // Create products
+    $types = array(
+        'gsm_service' => $services,
+        'gsm_account' => $accounts,
+        'gsm_phone' => $phones,
+        'gsm_part' => $parts
+    );
 
-    foreach ($all_samples as $sample) {
-        $post_id = wp_insert_post(array(
-            'post_title' => $sample['title'],
-            'post_content' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-            'post_status' => 'publish',
-            'post_type' => $sample['type'],
-        ));
+    foreach ($types as $type => $items) {
+        foreach ($items as $index => $item) {
+            $post_id = wp_insert_post(array(
+                'post_title' => $item['title'],
+                'post_content' => $item['desc'] . "\n\n" . 'Premium quality product with full warranty. Fast delivery and professional support. Order now and get instant service!',
+                'post_excerpt' => $item['desc'],
+                'post_status' => 'publish',
+                'post_type' => $type,
+            ));
 
-        if ($post_id) {
-            update_post_meta($post_id, '_gsm_price', $sample['price']);
-            update_post_meta($post_id, '_gsm_stock', 'in_stock');
-            update_post_meta($post_id, '_gsm_sku', 'GSM-' . strtoupper(substr(md5($sample['title']), 0, 6)));
-            update_post_meta($post_id, '_gsm_warranty', '12 months');
+            if ($post_id) {
+                // Set price with some having discounts
+                update_post_meta($post_id, '_gsm_price', $item['price']);
+                if ($index % 3 == 0) {
+                    update_post_meta($post_id, '_gsm_price_old', $item['price'] * 1.3);
+                }
+                update_post_meta($post_id, '_gsm_stock', $index % 7 == 0 ? 'out_of_stock' : 'in_stock');
+                update_post_meta($post_id, '_gsm_sku', 'GSM-' . strtoupper(substr(md5($item['title']), 0, 6)));
+                update_post_meta($post_id, '_gsm_warranty', $type == 'gsm_phone' ? '24 months' : '12 months');
+            }
         }
     }
 
-    // Sample blog posts
-    for ($i = 1; $i <= 3; $i++) {
+    // Sample blog posts (20 items)
+    $blog_posts = array(
+        array('title' => 'How to Check iPhone IMEI', 'content' => 'Learn how to check your iPhone IMEI number and why it\'s important for device verification and warranty claims.'),
+        array('title' => 'Complete Guide to Phone Unlocking', 'content' => 'Everything you need to know about unlocking your phone from carrier restrictions. Safe and legal methods explained.'),
+        array('title' => 'Fix Common Phone Issues', 'content' => 'Quick solutions to the most common smartphone problems. Save time and money with these expert tips.'),
+        array('title' => 'Battery Life Tips 2025', 'content' => 'Maximize your phone battery life with these proven techniques. Make your battery last longer than ever.'),
+        array('title' => 'Best Phones Under $500', 'content' => 'Top smartphone recommendations for budget-conscious buyers. Great features without breaking the bank.'),
+        array('title' => 'Screen Repair Guide', 'content' => 'Step-by-step guide to replacing your phone screen. DIY screen replacement made easy.'),
+        array('title' => 'Data Recovery Methods', 'content' => 'How to recover deleted photos and files from your smartphone. Don\'t lose your precious memories.'),
+        array('title' => 'Protect Your Phone', 'content' => 'Essential tips for keeping your smartphone safe and secure. Prevent damage and theft.'),
+        array('title' => 'Latest Phone Trends 2025', 'content' => 'Discover the latest innovations in smartphone technology. What\'s new and what\'s next.'),
+        array('title' => 'Camera Tips for Smartphones', 'content' => 'Take professional-quality photos with your phone camera. Master these photography techniques.'),
+        array('title' => 'Speed Up Your Phone', 'content' => 'Make your old phone feel new again. Performance optimization tips that really work.'),
+        array('title' => 'Cloud Storage Guide', 'content' => 'Choose the best cloud storage for your needs. Compare features and pricing.'),
+        array('title' => 'Security Best Practices', 'content' => 'Protect your personal data with these smartphone security tips. Stay safe online.'),
+        array('title' => 'App Recommendations 2025', 'content' => 'Must-have apps for productivity, entertainment, and everyday use. Boost your phone experience.'),
+        array('title' => 'Wireless Charging Explained', 'content' => 'Everything about wireless charging technology. Is it right for you?'),
+        array('title' => '5G Network Benefits', 'content' => 'Understand the advantages of 5G connectivity. Faster speeds and better coverage.'),
+        array('title' => 'Phone Accessories Worth Buying', 'content' => 'The best phone accessories that add real value. Smart investments for your device.'),
+        array('title' => 'Backup Your Data Properly', 'content' => 'Complete guide to backing up your smartphone data. Never lose important files again.'),
+        array('title' => 'Gaming on Smartphones', 'content' => 'Best phones for mobile gaming. Performance, battery, and cooling systems compared.'),
+        array('title' => 'Future of Mobile Technology', 'content' => 'Predictions and trends shaping the future of smartphones. What to expect in coming years.'),
+    );
+
+    foreach ($blog_posts as $index => $post) {
         wp_insert_post(array(
-            'post_title' => sprintf(__('Blog Post %d', 'gsm-ultimate'), $i),
-            'post_content' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.',
+            'post_title' => $post['title'],
+            'post_content' => $post['content'] . "\n\n" . 'Stay tuned for more tech tips and guides. Subscribe to our newsletter for the latest updates!',
+            'post_excerpt' => $post['content'],
             'post_status' => 'publish',
             'post_type' => 'post',
+            'post_category' => array(1), // Uncategorized
         ));
     }
 

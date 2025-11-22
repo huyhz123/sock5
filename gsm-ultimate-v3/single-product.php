@@ -192,8 +192,8 @@ $warranty = get_post_meta(get_the_ID(), '_gsm_warranty', true);
                     </a>
 
                     <!-- Contact Methods Grid -->
-                    <div class="card" style="padding: var(--spacing-lg); background: var(--gradient-dark); color: var(--color-white);">
-                        <h3 style="margin-bottom: var(--spacing-md); font-size: 18px; font-weight: 700;">
+                    <div class="card card-glass" style="padding: var(--spacing-lg); border: 2px solid var(--color-primary);">
+                        <h3 style="margin-bottom: var(--spacing-md); font-size: 18px; font-weight: 700; color: var(--color-black);">
                             <?php
                             if ($lang === 'en') echo 'Contact Now';
                             elseif ($lang === 'zh') echo '立即联系';
@@ -201,7 +201,7 @@ $warranty = get_post_meta(get_the_ID(), '_gsm_warranty', true);
                             ?>
                         </h3>
                         <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
-                            <a href="tel:<?php echo esc_attr(get_theme_mod('gsm_hotline', GSM_HOTLINE)); ?>" class="btn btn-glass" style="color: var(--color-white);">
+                            <a href="tel:<?php echo esc_attr(get_theme_mod('gsm_hotline', GSM_HOTLINE)); ?>" class="btn btn-outline">
                                 <i class="fas fa-phone-alt"></i>
                                 <?php
                                 if ($lang === 'en') echo 'Phone';
@@ -209,13 +209,13 @@ $warranty = get_post_meta(get_the_ID(), '_gsm_warranty', true);
                                 else echo 'Điện thoại';
                                 ?>
                             </a>
-                            <a href="https://wa.me/<?php echo str_replace('+', '', get_theme_mod('gsm_whatsapp', GSM_HOTLINE)); ?>" target="_blank" class="btn btn-glass" style="color: var(--color-white);">
+                            <a href="https://wa.me/<?php echo str_replace('+', '', get_theme_mod('gsm_whatsapp', GSM_HOTLINE)); ?>" target="_blank" class="btn btn-outline">
                                 <i class="fab fa-whatsapp"></i> WhatsApp
                             </a>
-                            <a href="https://zalo.me/<?php echo str_replace('+', '', get_theme_mod('gsm_zalo', GSM_HOTLINE)); ?>" target="_blank" class="btn btn-glass" style="color: var(--color-white);">
+                            <a href="https://zalo.me/<?php echo str_replace('+', '', get_theme_mod('gsm_zalo', GSM_HOTLINE)); ?>" target="_blank" class="btn btn-outline">
                                 <strong>Z</strong> Zalo
                             </a>
-                            <a href="https://t.me/<?php echo ltrim(get_theme_mod('gsm_telegram', GSM_TELEGRAM), '@'); ?>" target="_blank" class="btn btn-glass" style="color: var(--color-white);">
+                            <a href="https://t.me/<?php echo ltrim(get_theme_mod('gsm_telegram', GSM_TELEGRAM), '@'); ?>" target="_blank" class="btn btn-outline">
                                 <i class="fab fa-telegram-plane"></i> Telegram
                             </a>
                         </div>

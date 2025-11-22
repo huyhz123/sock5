@@ -268,7 +268,7 @@ $lang = gsm_get_current_language();
         </div>
 
         <div style="text-align: center; margin-top: var(--spacing-lg);">
-            <a href="<?php echo esc_url(home_url('/services/')); ?>" class="btn btn-outline btn-lg">
+            <a href="<?php echo esc_url(get_post_type_archive_link('gsm_service')); ?>" class="btn btn-outline btn-lg">
                 <?php echo gsm_t('view_all'); ?> <i class="fas fa-arrow-right"></i>
             </a>
         </div>

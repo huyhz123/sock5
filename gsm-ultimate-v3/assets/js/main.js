@@ -8,10 +8,11 @@
     'use strict';
 
     /**
-     * Language Switcher - AJAX Based (FIXED!)
+     * Language Switcher - AJAX Based with Immediate Reload
      */
     function initLanguageSwitcher() {
-        $('.lang-btn').on('click', function() {
+        $('.lang-btn').on('click', function(e) {
+            e.preventDefault();
             var $btn = $(this);
             var lang = $btn.data('lang');
 
@@ -20,10 +21,14 @@
                 return;
             }
 
+            // Set cookie immediately
+            document.cookie = 'gsm_language=' + lang + '; path=/; max-age=31536000; SameSite=Lax';
+
             // Show loading state
             $btn.prop('disabled', true);
             $('.lang-btn').removeClass('active');
             $btn.addClass('active');
+            $btn.html('<i class="fas fa-spinner fa-spin"></i>');
 
             // AJAX request to set language
             $.ajax({
@@ -35,29 +40,23 @@
                     language: lang
                 },
                 success: function(response) {
-                    if (response.success) {
-                        // Reload page to apply new language
-                        setTimeout(function() {
-                            location.reload();
-                        }, 300);
-                    } else {
-                        console.error('Failed to set language');
-                        $btn.prop('disabled', false);
-                    }
+                    // Reload page immediately
+                    location.reload(true);
                 },
                 error: function() {
-                    console.error('AJAX error');
-                    $btn.prop('disabled', false);
+                    // Even on error, reload to apply cookie
+                    location.reload(true);
                 }
             });
         });
     }
 
     /**
-     * Currency Switcher - AJAX Based (FIXED!)
+     * Currency Switcher - AJAX Based with Immediate Reload
      */
     function initCurrencySwitcher() {
-        $('.currency-btn').on('click', function() {
+        $('.currency-btn').on('click', function(e) {
+            e.preventDefault();
             var $btn = $(this);
             var currency = $btn.data('currency');
 
@@ -66,10 +65,14 @@
                 return;
             }
 
+            // Set cookie immediately
+            document.cookie = 'gsm_currency=' + currency + '; path=/; max-age=31536000; SameSite=Lax';
+
             // Show loading state
             $btn.prop('disabled', true);
             $('.currency-btn').removeClass('active');
             $btn.addClass('active');
+            $btn.html('<i class="fas fa-spinner fa-spin"></i>');
 
             // AJAX request to set currency
             $.ajax({
@@ -81,19 +84,12 @@
                     currency: currency
                 },
                 success: function(response) {
-                    if (response.success) {
-                        // Reload page to apply new currency
-                        setTimeout(function() {
-                            location.reload();
-                        }, 300);
-                    } else {
-                        console.error('Failed to set currency');
-                        $btn.prop('disabled', false);
-                    }
+                    // Reload page immediately
+                    location.reload(true);
                 },
                 error: function() {
-                    console.error('AJAX error');
-                    $btn.prop('disabled', false);
+                    // Even on error, reload to apply cookie
+                    location.reload(true);
                 }
             });
         });

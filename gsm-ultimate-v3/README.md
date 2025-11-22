@@ -1,6 +1,6 @@
-# GSM Ultimate v3.0 - WordPress Theme
+# GSM Ultimate v3.3 - WordPress Theme
 
-**Professional GSM Services Theme with Multi-language, Multi-currency & API Integration**
+**Professional GSM Services Theme with Multi-language, Multi-currency & API Integration - PERFECT EDITION**
 
 ## 📋 Features
 
@@ -284,7 +284,7 @@ http://www.gnu.org/licenses/gpl-2.0.html
 ## 🎉 Credits
 
 **Theme by:** HzGSM
-**Version:** 3.0.0
+**Version:** 3.3.0
 **Release Date:** 2025
 
 ### Libraries Used:
@@ -294,6 +294,21 @@ http://www.gnu.org/licenses/gpl-2.0.html
 - Google Fonts (Inter)
 
 ## 🔄 Changelog
+
+### Version 3.3.0 (2025) - PERFECT EDITION ✨
+- ✅ **FIXED:** Instant language switching (no delay!)
+- ✅ **FIXED:** Instant currency switching (immediate reload)
+- ✅ **FIXED:** All navigation links now use correct archive URLs
+- ✅ **FIXED:** Template bugs in header, footer, and single product pages
+- ✅ **NEW:** Dedicated services page template (page-services.php)
+- ✅ **NEW:** Massive sample content (52 products + 20 blog posts)
+- ✅ **OPTIMIZED:** All colors perfected for ultra bright theme
+- ✅ **OPTIMIZED:** Removed all dark gradients and shadows
+- ✅ **OPTIMIZED:** Hero banner with bright orange gradient
+- ✅ **OPTIMIZED:** Footer and header with bright backgrounds
+- ✅ **OPTIMIZED:** All text colors optimized for bright theme
+- ✅ Complete bug fixes and optimization
+- ✅ Production-ready stable release
 
 ### Version 3.2.0 (2025) - ULTRA BRIGHT WHITE EDITION ⚡
 - ✅ **NEW:** Ultra bright white theme (Canh Dương - Cực sáng!)
