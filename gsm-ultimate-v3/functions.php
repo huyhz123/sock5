@@ -1,21 +1,22 @@
 <?php
 /**
- * GSM Ultimate v3.1 - Functions
+ * GSM Ultimate v3.2 - Functions
  *
  * Features:
- * - Bright Modern UI (2025 Design)
+ * - ULTRA BRIGHT White Theme (Canh Dương)
  * - WordPress i18n Multi-language (EN, VI, ZH)
  * - Multi-currency (USD, VND, CNY)
  * - 4 Product Types (Services, Accounts, Phones, Parts)
  * - IMEI API Integration (GSMTOOL, DHRU)
  * - Auto Cache Clear System
  * - Optimized Language System
+ * - Beautiful Animated Logo
  *
  * Contact: +84386355255 | @hzgsm
  */
 
 // Theme Constants
-define('GSM_VERSION', '3.1.0');
+define('GSM_VERSION', '3.2.0');
 define('GSM_HOTLINE', '+84386355255');
 define('GSM_TELEGRAM', '@hzgsm');
 define('GSM_THEME_DIR', get_template_directory());

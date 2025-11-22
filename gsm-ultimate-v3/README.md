@@ -295,6 +295,20 @@ http://www.gnu.org/licenses/gpl-2.0.html
 
 ## 🔄 Changelog
 
+### Version 3.2.0 (2025) - ULTRA BRIGHT WHITE EDITION ⚡
+- ✅ **NEW:** Ultra bright white theme (Canh Dương - Cực sáng!)
+- ✅ **NEW:** Animated Hz logo with gradient & shadow effects
+- ✅ **NEW:** Subtle grid background pattern
+- ✅ Updated to pure white background (#ffffff)
+- ✅ Soft text colors for better readability (#2c3e50)
+- ✅ Ultra light borders (#f0f0f0)
+- ✅ Very soft shadows (4-10% opacity)
+- ✅ Removed dark mode support
+- ✅ Improved contrast throughout
+- ✅ All links validated and working
+- ✅ Enhanced glassmorphism effects
+- ✅ Optimized CSS for ultra bright theme
+
 ### Version 3.1.0 (2025) - BRIGHT EDITION
 - ✅ **NEW:** Bright modern UI theme (no more dark!)
 - ✅ **NEW:** Auto cache clear system (supports all major plugins)
