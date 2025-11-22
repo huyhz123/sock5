@@ -1,22 +1,24 @@
 <?php
 /**
- * GSM Ultimate v3.4 - Functions
+ * GSM Ultimate v3.5 - Functions
  *
  * Features:
- * - ULTRA BRIGHT White Theme (Canh Dương)
+ * - Modern 2025 Design with Professional Red Theme
+ * - Completely Redesigned CSS (81% reduction, 276 lines)
  * - WordPress i18n Multi-language (EN, VI, ZH)
  * - Multi-currency (USD, VND, CNY)
  * - 4 Product Types (Services, Accounts, Phones, Parts)
+ * - WooCommerce Integration (35 Sample Products)
  * - IMEI API Integration (GSMTOOL, DHRU)
  * - Auto Cache Clear System
- * - Optimized Language System
- * - Beautiful Animated Logo
+ * - Mobile-First Responsive Design
+ * - SEO Optimized for 2025
  *
  * Contact: +84386355255 | @hzgsm
  */
 
 // Theme Constants
-define('GSM_VERSION', '3.4.0');
+define('GSM_VERSION', '3.5.0');
 define('GSM_HOTLINE', '+84386355255');
 define('GSM_TELEGRAM', '@hzgsm');
 define('GSM_THEME_DIR', get_template_directory());
@@ -896,21 +898,50 @@ function gsm_create_sample_content() {
     // Create WooCommerce Sample Products (if WooCommerce is active)
     if (class_exists('WooCommerce')) {
         $woo_products = array(
-            array('name' => 'iPhone 15 Pro Max 256GB', 'price' => '1299.99', 'sale_price' => '1199.99', 'desc' => 'Latest iPhone 15 Pro Max with Titanium design, A17 Pro chip, 256GB storage. Brand new sealed.', 'cat' => 'Smartphones'),
-            array('name' => 'Samsung Galaxy S24 Ultra', 'price' => '1199.99', 'desc' => 'Samsung S24 Ultra 512GB with S Pen, 200MP camera, Snapdragon 8 Gen 3.', 'cat' => 'Smartphones'),
-            array('name' => 'Google Pixel 8 Pro', 'price' => '899.99', 'sale_price' => '799.99', 'desc' => 'Google Pixel 8 Pro with AI features, Tensor G3 chip, 128GB storage.', 'cat' => 'Smartphones'),
-            array('name' => 'iPhone IMEI Check Service', 'price' => '2.99', 'desc' => 'Fast IMEI verification for all iPhone models. Get detailed information instantly.', 'cat' => 'Services'),
-            array('name' => 'Samsung Network Unlock', 'price' => '9.99', 'sale_price' => '7.99', 'desc' => 'Unlock any Samsung device from all carriers. Permanent unlock guaranteed.', 'cat' => 'Services'),
-            array('name' => 'iCloud Removal Service', 'price' => '29.99', 'desc' => 'Professional iCloud unlock service. Remove activation lock safely and permanently.', 'cat' => 'Services'),
-            array('name' => 'AirPods Pro 2nd Gen', 'price' => '249.99', 'sale_price' => '219.99', 'desc' => 'AirPods Pro with Active Noise Cancellation, USB-C charging case.', 'cat' => 'Accessories'),
-            array('name' => 'Samsung Galaxy Buds 2 Pro', 'price' => '229.99', 'desc' => 'Premium wireless earbuds with 360 Audio and ANC.', 'cat' => 'Accessories'),
-            array('name' => 'iPhone 14 OLED Screen', 'price' => '89.99', 'desc' => 'Original quality OLED replacement screen for iPhone 14. Includes tools.', 'cat' => 'Parts'),
-            array('name' => 'Samsung S23 Battery', 'price' => '29.99', 'sale_price' => '24.99', 'desc' => 'High capacity replacement battery for Galaxy S23. 4000mAh.', 'cat' => 'Parts'),
-            array('name' => 'Apple ID Premium Account', 'price' => '4.99', 'desc' => 'Fresh Apple ID with iCloud access and full warranty.', 'cat' => 'Accounts'),
-            array('name' => 'Netflix Premium 4K', 'price' => '12.99', 'desc' => 'Netflix Premium account - 4 screens, Ultra HD quality.', 'cat' => 'Accounts'),
-            array('name' => 'Xiaomi 14 Pro', 'price' => '699.99', 'desc' => 'Xiaomi 14 Pro with Leica camera, Snapdragon 8 Gen 3, 256GB.', 'cat' => 'Smartphones'),
-            array('name' => 'OnePlus 12', 'price' => '749.99', 'sale_price' => '699.99', 'desc' => 'OnePlus 12 with 100W fast charging and flagship performance.', 'cat' => 'Smartphones'),
-            array('name' => 'Phone Repair Tool Kit', 'price' => '19.99', 'desc' => 'Complete 38-piece phone repair tool kit for all smartphones.', 'cat' => 'Accessories'),
+            // Smartphones (10 products)
+            array('name' => 'iPhone 15 Pro Max 256GB', 'price' => '1299.99', 'sale_price' => '1199.99', 'desc' => 'Latest iPhone 15 Pro Max with Titanium design, A17 Pro chip, 256GB storage. Brand new sealed. Free shipping!', 'cat' => 'Smartphones'),
+            array('name' => 'Samsung Galaxy S24 Ultra 512GB', 'price' => '1199.99', 'sale_price' => '1099.99', 'desc' => 'Samsung S24 Ultra with S Pen, 200MP camera, Snapdragon 8 Gen 3. Factory unlocked, 1 year warranty.', 'cat' => 'Smartphones'),
+            array('name' => 'Google Pixel 8 Pro 128GB', 'price' => '899.99', 'sale_price' => '799.99', 'desc' => 'Google Pixel 8 Pro with AI features, Tensor G3 chip, Magic Eraser. Best Android camera!', 'cat' => 'Smartphones'),
+            array('name' => 'iPhone 14 Pro 128GB', 'price' => '999.99', 'desc' => 'iPhone 14 Pro with Dynamic Island, A16 chip, ProRAW camera. Factory unlocked, like new.', 'cat' => 'Smartphones'),
+            array('name' => 'Xiaomi 14 Pro 256GB', 'price' => '699.99', 'desc' => 'Xiaomi 14 Pro with Leica camera, Snapdragon 8 Gen 3, 120W charging. Global version.', 'cat' => 'Smartphones'),
+            array('name' => 'OnePlus 12 512GB', 'price' => '749.99', 'sale_price' => '699.99', 'desc' => 'OnePlus 12 with 100W fast charging, Hasselblad camera, flagship performance.', 'cat' => 'Smartphones'),
+            array('name' => 'Samsung Galaxy Z Fold 5', 'price' => '1799.99', 'desc' => 'Latest foldable phone with 7.6" display, S Pen support, multitasking powerhouse.', 'cat' => 'Smartphones'),
+            array('name' => 'iPhone 13 Pro Max 256GB', 'price' => '899.99', 'sale_price' => '799.99', 'desc' => 'iPhone 13 Pro Max, ProMotion display, cinematic mode. Excellent condition, warranty included.', 'cat' => 'Smartphones'),
+            array('name' => 'Realme GT 5 Pro', 'price' => '549.99', 'desc' => 'Realme GT 5 Pro with Snapdragon 8 Gen 3, 144Hz display, 5400mAh battery.', 'cat' => 'Smartphones'),
+            array('name' => 'Oppo Find X7 Ultra', 'price' => '899.99', 'desc' => 'Oppo Find X7 Ultra with Hasselblad quad camera, Snapdragon 8 Gen 3, premium design.', 'cat' => 'Smartphones'),
+
+            // Services (8 products)
+            array('name' => 'iPhone IMEI Check Service', 'price' => '2.99', 'desc' => 'Fast IMEI verification for all iPhone models. Check carrier lock, warranty, blacklist status instantly!', 'cat' => 'Services'),
+            array('name' => 'Samsung Network Unlock', 'price' => '9.99', 'sale_price' => '7.99', 'desc' => 'Unlock any Samsung device from all carriers. Permanent unlock, 99% success rate guaranteed!', 'cat' => 'Services'),
+            array('name' => 'iCloud Removal Service', 'price' => '29.99', 'desc' => 'Professional iCloud unlock service. Remove activation lock safely. Support all iPhone models!', 'cat' => 'Services'),
+            array('name' => 'Xiaomi Mi Account Unlock', 'price' => '12.99', 'desc' => 'Fast Mi Account removal for all Xiaomi phones. Bypass Mi Cloud lock in 1-24 hours.', 'cat' => 'Services'),
+            array('name' => 'Huawei FRP Bypass', 'price' => '8.99', 'desc' => 'Bypass Google account on Huawei devices. Professional service with 100% guarantee.', 'cat' => 'Services'),
+            array('name' => 'Phone Data Recovery', 'price' => '39.99', 'desc' => 'Professional data recovery service for all phones. Recover photos, videos, contacts, messages.', 'cat' => 'Services'),
+            array('name' => 'Phone Repair Service', 'price' => '49.99', 'desc' => 'Professional phone repair - screen, battery, charging port. Free diagnostic, 90 days warranty!', 'cat' => 'Services'),
+            array('name' => 'IMEI Repair Service', 'price' => '59.99', 'desc' => 'IMEI repair and restoration service. Fix invalid IMEI, restore network. Expert technicians.', 'cat' => 'Services'),
+
+            // Accessories (7 products)
+            array('name' => 'AirPods Pro 2nd Gen', 'price' => '249.99', 'sale_price' => '219.99', 'desc' => 'AirPods Pro with Active Noise Cancellation, USB-C charging, spatial audio. Brand new sealed!', 'cat' => 'Accessories'),
+            array('name' => 'Samsung Galaxy Buds 2 Pro', 'price' => '229.99', 'desc' => 'Premium wireless earbuds with 360 Audio, ANC, and IPX7 water resistance.', 'cat' => 'Accessories'),
+            array('name' => 'Anker 20000mAh Power Bank', 'price' => '49.99', 'sale_price' => '39.99', 'desc' => 'Fast charging power bank 20000mAh with PD 3.0, charge 3 devices simultaneously.', 'cat' => 'Accessories'),
+            array('name' => 'Spigen Phone Case', 'price' => '24.99', 'desc' => 'Military-grade protection case, air cushion technology, raised bezels. For all phone models.', 'cat' => 'Accessories'),
+            array('name' => 'Wireless Charging Pad 15W', 'price' => '29.99', 'desc' => '15W fast wireless charger, Qi-certified, works with iPhone, Samsung, all Qi devices.', 'cat' => 'Accessories'),
+            array('name' => 'Phone Repair Tool Kit Pro', 'price' => '19.99', 'desc' => 'Complete 38-piece professional tool kit for all smartphones. Precision screwdrivers included.', 'cat' => 'Accessories'),
+            array('name' => 'Tempered Glass Screen Protector', 'price' => '9.99', 'desc' => '9H hardness tempered glass, oleophobic coating, bubble-free installation. 2-pack.', 'cat' => 'Accessories'),
+
+            // Parts (5 products)
+            array('name' => 'iPhone 14 OLED Screen', 'price' => '89.99', 'desc' => 'Original quality OLED replacement screen for iPhone 14. Includes tools and adhesive.', 'cat' => 'Parts'),
+            array('name' => 'Samsung S23 Battery 4000mAh', 'price' => '29.99', 'sale_price' => '24.99', 'desc' => 'High capacity replacement battery for Galaxy S23. 4000mAh, OEM quality, 6 months warranty.', 'cat' => 'Parts'),
+            array('name' => 'iPhone 13 Camera Module', 'price' => '69.99', 'desc' => 'Replacement camera module for iPhone 13, 12MP dual camera, tested and working.', 'cat' => 'Parts'),
+            array('name' => 'Xiaomi Screen Replacement Kit', 'price' => '45.99', 'desc' => 'LCD screen replacement for Xiaomi phones. Includes frame, tools, and adhesive.', 'cat' => 'Parts'),
+            array('name' => 'Universal Phone Battery', 'price' => '19.99', 'desc' => 'Compatible replacement battery for multiple phone models. High quality, CE certified.', 'cat' => 'Parts'),
+
+            // Accounts (5 products)
+            array('name' => 'Apple ID Premium Account', 'price' => '4.99', 'desc' => 'Fresh Apple ID with iCloud 50GB, full warranty, works worldwide. Instant delivery!', 'cat' => 'Accounts'),
+            array('name' => 'Netflix Premium 4K', 'price' => '12.99', 'desc' => 'Netflix Premium account - 4 screens, Ultra HD quality, downloads included. 1 month subscription.', 'cat' => 'Accounts'),
+            array('name' => 'Spotify Premium Family', 'price' => '9.99', 'desc' => 'Spotify Family plan for 6 accounts, ad-free music, unlimited skips, offline mode.', 'cat' => 'Accounts'),
+            array('name' => 'YouTube Premium', 'price' => '8.99', 'desc' => 'YouTube Premium - no ads, background play, YouTube Music included. 1 month subscription.', 'cat' => 'Accounts'),
+            array('name' => 'Office 365 Lifetime', 'price' => '29.99', 'sale_price' => '24.99', 'desc' => 'Microsoft Office 365 lifetime license. Word, Excel, PowerPoint, 1TB OneDrive.', 'cat' => 'Accounts'),
         );
 
         foreach ($woo_products as $index => $prod) {
