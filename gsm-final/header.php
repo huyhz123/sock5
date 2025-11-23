@@ -2,8 +2,53 @@
 <html <?php language_attributes(); ?>>
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="theme-color" content="#DC2626">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <?php
+    // SEO Meta Tags
+    $page_title = wp_get_document_title();
+    $page_description = get_bloginfo('description');
+    $page_url = get_permalink();
+    $site_name = get_bloginfo('name');
+    $thumbnail = has_post_thumbnail() ? get_the_post_thumbnail_url(get_the_ID(), 'large') : get_template_directory_uri() . '/assets/images/default-og.jpg';
+
+    // For WooCommerce products
+    if (function_exists('is_product') && is_product()) {
+        global $product;
+        if ($product) {
+            $page_description = wp_strip_all_tags($product->get_short_description());
+        }
+    }
+
+    // For blog posts
+    if (is_single() && !is_product()) {
+        $page_description = wp_strip_all_tags(get_the_excerpt());
+    }
+    ?>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="<?php echo is_front_page() ? 'website' : 'article'; ?>">
+    <meta property="og:url" content="<?php echo esc_url($page_url); ?>">
+    <meta property="og:title" content="<?php echo esc_attr($page_title); ?>">
+    <meta property="og:description" content="<?php echo esc_attr($page_description); ?>">
+    <meta property="og:image" content="<?php echo esc_url($thumbnail); ?>">
+    <meta property="og:site_name" content="<?php echo esc_attr($site_name); ?>">
+    <meta property="og:locale" content="<?php echo esc_attr(get_locale()); ?>">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="<?php echo esc_url($page_url); ?>">
+    <meta name="twitter:title" content="<?php echo esc_attr($page_title); ?>">
+    <meta name="twitter:description" content="<?php echo esc_attr($page_description); ?>">
+    <meta name="twitter:image" content="<?php echo esc_url($thumbnail); ?>">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="<?php echo esc_url($page_url); ?>">
+
     <?php wp_head(); ?>
 </head>
 <body <?php body_class(); ?>>
@@ -144,86 +189,3 @@ function gsm_default_menu() {
     <?php
 }
 ?>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-    // Search Toggle
-    const searchToggle = document.querySelector('.search-toggle');
-    const searchOverlay = document.querySelector('.search-overlay');
-    const searchClose = document.querySelector('.search-close');
-    const searchField = document.querySelector('.search-field');
-
-    if (searchToggle && searchOverlay) {
-        // Open search
-        searchToggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            searchOverlay.classList.add('active');
-            document.body.style.overflow = 'hidden';
-            if (searchField) {
-                setTimeout(() => searchField.focus(), 300);
-            }
-        });
-
-        // Close search
-        if (searchClose) {
-            searchClose.addEventListener('click', function() {
-                searchOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-            });
-        }
-
-        // Close on overlay click
-        searchOverlay.addEventListener('click', function(e) {
-            if (e.target === searchOverlay) {
-                searchOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-
-        // Close on ESC key
-        document.addEventListener('keydown', function(e) {
-            if (e.key === 'Escape' && searchOverlay.classList.contains('active')) {
-                searchOverlay.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-    }
-
-    // Mobile Menu Toggle
-    const mobileMenuToggle = document.querySelector('.mobile-menu-toggle');
-    const mainNavigation = document.querySelector('.main-navigation');
-
-    if (mobileMenuToggle && mainNavigation) {
-        mobileMenuToggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            mainNavigation.classList.toggle('active');
-            this.querySelector('i').classList.toggle('fa-bars');
-            this.querySelector('i').classList.toggle('fa-times');
-        });
-
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', function(e) {
-            if (!mobileMenuToggle.contains(e.target) && !mainNavigation.contains(e.target)) {
-                mainNavigation.classList.remove('active');
-                const icon = mobileMenuToggle.querySelector('i');
-                if (icon) {
-                    icon.classList.add('fa-bars');
-                    icon.classList.remove('fa-times');
-                }
-            }
-        });
-
-        // Close mobile menu on window resize
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 1023) {
-                mainNavigation.classList.remove('active');
-                const icon = mobileMenuToggle.querySelector('i');
-                if (icon) {
-                    icon.classList.add('fa-bars');
-                    icon.classList.remove('fa-times');
-                }
-            }
-        });
-    }
-});
-</script>
